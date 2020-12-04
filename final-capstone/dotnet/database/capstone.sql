@@ -25,32 +25,39 @@ CREATE TABLE users (
 );
 
 CREATE TABLE pets (
-	petId int IDENTITY(1,1) NOT NULL,
-	petType varchar(64) NOT NULL,
-	petAge int,
-	petName varchar(64) NOT NULL,
-	petImage varchar(200),
-	isAdopted bit NOT NULL,
-	arrivalDate dateTime NOT NULL,
-	adoptionDate dateTime,
-	adoptedBy varchar(64)
-	CONSTRAINT PK_pet PRIMARY KEY (petId)
+	pet_id int IDENTITY(1,1) NOT NULL,
+	pet_type varchar(64) NOT NULL,
+	pet_age int,
+	pet_name varchar(64) NOT NULL,
+	pet_image varchar(200),
+	is_adopted bit NOT NULL,
+	arrival_date dateTime NOT NULL,
+	adoption_date dateTime,
+	adopted_by varchar(64)
+	CONSTRAINT PK_pet PRIMARY KEY (pet_id)
 	
 );
+/*
+CREATE TABLE species (
+	species_id int IDENTITY(1,1) NOT NULL,
+	species_name varchar(64) NOT NULL,
+	CONSTRAINT PK_breed PRIMARY KEY (speciesId)
+);
 
-CREATE TABLE breed (
-	breedId varchar(64) NOT NULL,
-	breedName varchar(64) NOT NULL
-	CONSTRAINT PK_breed PRIMARY KEY (breedId)
+CREATE TABLE breeds (
+	breed_id int IDENTITY(1,1) NOT NULL,
+	breed_name varchar(64) NOT NULL,
+	CONSTRAINT PK_breed PRIMARY KEY (breed_id)
 );
 
 AlTER TABLE pets 
-ADD FOREIGN KEY(petType) REFERENCES breed(breedId)
-
+ADD FOREIGN KEY(pet_type) REFERENCES breed(breed_id)
+*/
 
 
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
 GO
