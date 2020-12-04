@@ -23,7 +23,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM pets WHERE isAdopted = 0", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM pets WHERE is_adopted = 0", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -45,7 +45,7 @@ namespace Capstone.DAO
             p.PetId = Convert.ToInt32(reader["pet_id"]);
             p.Name = Convert.ToString(reader["pet_name"]);
             p.Age = Convert.ToInt32(reader["pet_age"]);
-            p.Picture = Convert.ToString(reader["picture"]);
+            p.Picture = Convert.ToString(reader["pet_image"]);
             p.IsAdopted = Convert.ToBoolean(reader["is_adopted"]);
             p.ArrivalDate = Convert.ToString(reader["arrival_date"]);
             p.AdoptionDate= Convert.ToString(reader["adoption_date"]);

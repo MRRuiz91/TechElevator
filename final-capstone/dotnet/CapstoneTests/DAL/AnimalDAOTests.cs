@@ -10,13 +10,13 @@ namespace CapstoneTests.DAL
     [TestClass]
     public class AnimalDAOTests
     {
-        protected string ConnectionString { get; } = "Server=.\\SQLEXPRESS;Database=Capstone;Trusted_Connection=True;";
+        protected string ConnectionString { get; } = "Server=.\\SQLEXPRESS;Database=Final_Capstone;Trusted_Connection=True;";
 
         protected int NewAnimalID { get; private set; }
 
         private TransactionScope transaction;
 
-
+        [TestInitialize]
         public void Setup()
         {
             // Begin the transaction

@@ -20,7 +20,7 @@ namespace CapstoneTests.DAL
             IList<Pet> pet = dao.GetAllPets();
 
             //Assert
-            Assert.AreEqual(4, pet.Count);
+            Assert.AreEqual(3, pet.Count);
         }
 
     }

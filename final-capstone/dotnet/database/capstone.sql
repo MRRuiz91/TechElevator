@@ -1,4 +1,4 @@
-USE master
+USE master;
 GO
 
 --drop database if it exists
@@ -31,8 +31,8 @@ CREATE TABLE pets (
 	pet_name varchar(64) NOT NULL,
 	pet_image varchar(200),
 	is_adopted bit NOT NULL,
-	arrival_date dateTime NOT NULL,
-	adoption_date dateTime,
+	arrival_date varchar(10) NOT NULL,
+	adoption_date varchar(10),
 	adopted_by varchar(64)
 	CONSTRAINT PK_pet PRIMARY KEY (pet_id)
 	
