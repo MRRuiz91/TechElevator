@@ -8,7 +8,7 @@ using System.Transactions;
 namespace CapstoneTests.DAL
 {
     [TestClass]
-    class AnimalDAOTests
+    public class AnimalDAOTests
     {
         protected string ConnectionString { get; } = "Server=.\\SQLEXPRESS;Database=Capstone;Trusted_Connection=True;";
 
