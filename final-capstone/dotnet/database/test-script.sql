@@ -26,7 +26,7 @@ CREATE TABLE users (
 
 CREATE TABLE pets (
 	pet_id int IDENTITY(1,1) NOT NULL,
-	pet_type varchar(64) NOT NULL,
+	breed varchar(64) NOT NULL,
 	pet_age int,
 	pet_name varchar(64) NOT NULL,
 	pet_image varchar(200),
