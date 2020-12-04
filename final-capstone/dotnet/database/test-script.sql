@@ -31,8 +31,8 @@ CREATE TABLE pets (
 	pet_name varchar(64) NOT NULL,
 	pet_image varchar(200),
 	is_adopted bit NOT NULL,
-	arrival_date dateTime NOT NULL,
-	adoption_date dateTime,
+	arrival_date varchar(10) NOT NULL,
+	adoption_date varchar(10),
 	adopted_by varchar(64)
 	CONSTRAINT PK_pet PRIMARY KEY (pet_id)
 	
@@ -59,5 +59,9 @@ ADD FOREIGN KEY(pet_type) REFERENCES breed(breed_id)
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
-INSERT INTO pets (pet_type, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by) VALUES ('Elephant', 49, 'Mai-Thai', 'Image goes here', 0, 12/04/2020, 'N/A', 'N/A')
+INSERT INTO pets (pet_type, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by) VALUES ('Elephant', 49, 'Mai-Thai', 'Image goes here', 0, '12-04-2010', '04/27/2020', 'Matt')
+INSERT INTO pets (pet_type, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by) VALUES ('Dog', 2, 'Izzy', 'Image goes here', 0, '12/01/2010','08/19/2018', 'Zach')
+INSERT INTO pets (pet_type, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by) VALUES ('Gecko', 4, 'Rango', 0, '12-04-2010')
+INSERT INTO pets (pet_type, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by) VALUES ('Cat', 12, 'Choncky', 'Image goes here', 0, '12/02/2010', 'Isabella', '01/01/2018')
+
 GO
