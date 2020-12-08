@@ -1,7 +1,7 @@
 <template>
-<div>
-    <p>petlist component</p>
-  <pet-card v-bind:pet="pet"  v-for="pet in $store.state.availablePets" v-bind:key="pet.petId"/>
+<div class= "pet-container">
+    
+  <pet-card class= "card" v-bind:pet="pet"  v-for="pet in $store.state.availablePets" v-bind:key="pet.petId"/>
 </div>
 </template>
 
@@ -21,15 +21,19 @@ export default {
 
         })*/
     },
-    data(){
-        return{
-            store: this.$store.state.availablePets
-        }
+    computed: {
+        fillList() {
+            return this.$store.state.availablePets
+        } 
     }
 
 }
 </script>
 
-<style>
-
+<style scoped>
+.pet-container {
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
 </style>

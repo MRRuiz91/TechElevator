@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     availablePets: []
+
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -39,8 +40,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    UPDATE_AVAILABLE_PETS(state, petsNotAdopted){
-      this.availablePets = petsNotAdopted;
+    UPDATE_AVAILABLE_PETS(state, petsNotAdopted) {
+      state.availablePets = petsNotAdopted;
     }
   }
 })

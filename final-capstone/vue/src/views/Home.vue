@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <center><h1>Little Buddies looking for a 'Fur'ever Home</h1></center>
     <pet-list/>
   </div>
 </template>
