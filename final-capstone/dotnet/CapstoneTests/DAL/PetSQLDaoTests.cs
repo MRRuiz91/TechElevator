@@ -22,6 +22,5 @@ namespace CapstoneTests.DAL
             //Assert
             Assert.AreEqual(3, pet.Count);
         }
-
     }
 }

@@ -11,7 +11,6 @@ namespace CapstoneTests.DAL
     public class UserSqlDAOTests: AnimalDAOTests
     {
         [TestMethod]
-
         public void AddApplicationTestHappyPath()
         {
             //Arrange
@@ -28,6 +27,21 @@ namespace CapstoneTests.DAL
             //Assert
             Assert.AreEqual(true, result);
         }
+        [TestMethod]
+        public void AddApplicationTestEmptyValues()
+        {
+            IUserDAO dao = new UserSqlDAO(ConnectionString);
+            Application app = new Application();
+            app.Username = "test";
+            app.Phone = "";
+            app.Email = "test@test.com";
+            app.PromptResponse = "Testy test test test";
 
+            //Act
+            bool result = dao.AddApplication(app);
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
     }
 }
