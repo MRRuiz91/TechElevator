@@ -1,6 +1,7 @@
 <template>
       <b-navbar toggleable="med"  type="dark" variant="warning"> 
       <div>
+        
         <b-link class = "text-dark text-decoration-none" to="home"> 
           <img src="..\assets\pawPrint.png" class="img" height="20 px"/>
           Home

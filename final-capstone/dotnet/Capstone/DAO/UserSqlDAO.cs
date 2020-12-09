@@ -56,7 +56,10 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO users (username, password_hash, salt, user_role) VALUES (@username, @password_hash, @salt, @user_role)", conn);
+                    SqlCommand cmd =
+                        new SqlCommand(
+                            "INSERT INTO users (username, password_hash, salt, user_role) VALUES (@username, @password_hash, @salt, @user_role)",
+                            conn);
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@password_hash", hash.Password);
                     cmd.Parameters.AddWithValue("@salt", hash.Salt);
@@ -84,6 +87,42 @@ namespace Capstone.DAO
             };
 
             return u;
+        }
+
+        bool IUserDAO.AddApplication(Application app)
+        {
+            bool result = false;
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd =
+                        new SqlCommand(
+                            "INSERT INTO applications (username, email, phone_number, prompt_response, status) VALUES (@username, @email, @phone_number, @prompt_response, @status)",
+                            conn);
+                    cmd.Parameters.AddWithValue("@username", app.Username);
+                    cmd.Parameters.AddWithValue("@email", app.Email);
+                    cmd.Parameters.AddWithValue("@phone_number", app.Phone);
+                    cmd.Parameters.AddWithValue("@prompt_response", app.PromptResponse);
+                    cmd.Parameters.AddWithValue("@status", app.Status);
+                    rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected == 1)
+                    {
+                        result = true;
+                        
+                    }
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return result;
         }
     }
 }

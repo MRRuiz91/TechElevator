@@ -37,6 +37,17 @@ CREATE TABLE pets (
 	CONSTRAINT PK_pet PRIMARY KEY (pet_id)
 	
 );
+
+CREATE TABLE applications (
+	application_id int IDENTITY(1,1) NOT NULL,
+	username varchar(64) NOT NULL,
+	email varchar(64) NOT NULL,
+	phone_number varchar(12) NOT NULL,
+	prompt_response varchar(500) NOT NULL,
+	status int NOT NULL --1 = PENDING, 2= APPROVED, 3=DENIED
+	CONSTRAINT PK_app PRIMARY KEY (application_id)
+
+);
 /*
 CREATE TABLE species (
 	species_id int IDENTITY(1,1) NOT NULL,
