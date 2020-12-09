@@ -19,6 +19,8 @@ namespace CapstoneTests.DAL
             app.Username = "test";
             app.Phone = "123-456-7890";
             app.Email = "test@test.com";
+            app.FirstName = "bob";
+            app.LastName = "thorton";
             app.PromptResponse = "Testy test test test";
 
             //Act

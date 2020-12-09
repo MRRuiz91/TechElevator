@@ -7,10 +7,12 @@ namespace Capstone.Models
 {
     public class Application
     {
-        public string Username { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string PromptResponse { get; set; }
+        public string Username { get; set; } = "";
+        public string Phone { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string PromptResponse { get; set; } = "";
+        public string FirstName { get; set; } = "";
+        public string LastName { get; set; } = "";
         public int Status { get; set; } = 1;
 
 

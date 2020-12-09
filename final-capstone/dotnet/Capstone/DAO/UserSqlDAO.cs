@@ -101,13 +101,16 @@ namespace Capstone.DAO
 
                     SqlCommand cmd =
                         new SqlCommand(
-                            "INSERT INTO applications (username, email, phone_number, prompt_response, status) VALUES (@username, @email, @phone_number, @prompt_response, @status)",
+                            "INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status) VALUES (@username, @email, @phone_number, @prompt_response, @first_name, @last_name, @status)",
                             conn);
                     cmd.Parameters.AddWithValue("@username", app.Username);
                     cmd.Parameters.AddWithValue("@email", app.Email);
                     cmd.Parameters.AddWithValue("@phone_number", app.Phone);
                     cmd.Parameters.AddWithValue("@prompt_response", app.PromptResponse);
+                    cmd.Parameters.AddWithValue("@first_name", app.FirstName);
+                    cmd.Parameters.AddWithValue("@last_name", app.LastName);
                     cmd.Parameters.AddWithValue("@status", app.Status);
+                    
                     rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected == 1)
                     {

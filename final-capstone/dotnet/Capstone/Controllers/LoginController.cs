@@ -68,5 +68,28 @@ namespace Capstone.Controllers
 
             return result;
         }
+        [HttpPost("/apply")]
+        public IActionResult Apply(Application app)
+        {
+            IActionResult result;
+
+            User existingUser = userDAO.GetUser(app.Username);
+            if (existingUser != null)
+            {
+                return Conflict(new { message = "Username already taken. Please choose a different username." });
+            }
+
+            bool success = userDAO.AddApplication(app);
+            if(success)
+            {
+                result = Created(app.Username, null); //values aren't read on client
+            }
+            else
+            {
+                result = BadRequest(new { message = "An error occurred and user was not created." });
+            }
+
+            return result;
+        }
     }
 }

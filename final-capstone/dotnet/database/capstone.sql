@@ -44,6 +44,8 @@ CREATE TABLE applications (
 	email varchar(64) NOT NULL,
 	phone_number varchar(12) NOT NULL,
 	prompt_response varchar(500) NOT NULL,
+	first_name varchar(64) NOT NULL,
+	last_name varchar(64) NOT NULL,
 	status int NOT NULL --1 = PENDING, 2= APPROVED, 3=DENIED
 	CONSTRAINT PK_app PRIMARY KEY (application_id)
 
