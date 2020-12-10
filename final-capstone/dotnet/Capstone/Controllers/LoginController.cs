@@ -12,12 +12,14 @@ namespace Capstone.Controllers
         private readonly ITokenGenerator tokenGenerator;
         private readonly IPasswordHasher passwordHasher;
         private readonly IUserDAO userDAO;
+        private readonly IApplicationDAO appDAO;
 
-        public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDAO _userDAO)
+        public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDAO _userDAO, IApplicationDAO _appDAO)
         {
             tokenGenerator = _tokenGenerator;
             passwordHasher = _passwordHasher;
             userDAO = _userDAO;
+            appDAO = _appDAO;
         }
 
         [HttpPost]
@@ -45,7 +47,7 @@ namespace Capstone.Controllers
             return result;
         }
 
-        [HttpPost("/register")]
+        /*[HttpPost("/register")]
         public IActionResult Register(RegisterUser userParam)
         {
             IActionResult result;
@@ -67,19 +69,19 @@ namespace Capstone.Controllers
             }
 
             return result;
-        }
+        }*/
         [HttpPost("/apply")]
         public IActionResult Apply(Application app)
         {
             IActionResult result;
 
             User existingUser = userDAO.GetUser(app.Username);
-            if (existingUser != null)
+            if (existingUser != null && app !=null)
             {
                 return Conflict(new { message = "Username already taken. Please choose a different username." });
             }
 
-            bool success = userDAO.AddApplication(app);
+            bool success = appDAO.AddApplication(app);
             if(success)
             {
                 result = Created(app.Username, null); //values aren't read on client

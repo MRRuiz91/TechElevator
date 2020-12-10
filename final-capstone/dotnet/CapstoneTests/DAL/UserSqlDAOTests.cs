@@ -14,7 +14,7 @@ namespace CapstoneTests.DAL
         public void AddApplicationTestHappyPath()
         {
             //Arrange
-            IUserDAO dao = new UserSqlDAO(ConnectionString);
+            IApplicationDAO dao = new ApplicationSqlDAO(ConnectionString);
             Application app = new Application();
             app.Username = "test";
             app.Phone = "123-456-7890";
@@ -32,7 +32,7 @@ namespace CapstoneTests.DAL
         [TestMethod]
         public void AddApplicationTestEmptyValues()
         {
-            IUserDAO dao = new UserSqlDAO(ConnectionString);
+            IApplicationDAO dao = new ApplicationSqlDAO(ConnectionString);
             Application app = new Application();
             app.Username = "test";
             app.Phone = "";

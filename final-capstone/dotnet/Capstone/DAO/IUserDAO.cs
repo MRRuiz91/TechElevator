@@ -8,7 +8,7 @@ namespace Capstone.DAO
         User GetUser(string username);
         User AddUser(string username, string password, string role);
 
-        bool AddApplication(Application app);
+
 
     }
 }

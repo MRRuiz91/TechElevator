@@ -8,6 +8,7 @@ namespace Capstone.DAO
 {
     public interface IApplicationDAO
     {
-        Application GetApplicationsByUsername(string username)
+        Application GetApplicationsByUsername(string username);
+        bool AddApplication(Application app);
     }
 }
