@@ -20,8 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    availablePets: []
-
+    availablePets: [],
+    showAddPetForm: false,
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -42,6 +42,9 @@ export default new Vuex.Store({
     },
     UPDATE_AVAILABLE_PETS(state, petsNotAdopted) {
       state.availablePets = petsNotAdopted;
+    },
+    TOGGLE_ADD_PET_FORM(state) {
+      state.showAddPetForm = !state.showAddPetForm;
     }
   }
 })

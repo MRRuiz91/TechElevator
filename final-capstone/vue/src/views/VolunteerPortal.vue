@@ -11,7 +11,7 @@
         </b-card>
      </div>
      <b-button v-b-toggle.collapse-1 variant="warning">Add Pet</b-button>
-     <b-collapse id="collapse-1">
+     <b-collapse id="collapse-1" v-model="$store.state.showAddPetForm">
         <b-card>
             <add-pet-form />
         </b-card>
@@ -28,6 +28,10 @@ import AddPetForm from '../components/AddPetForm.vue';
 
 export default {
     components: { AddPetForm },
+    data() {
+        return {
+        }
+    }
 }
 </script>
 <style>

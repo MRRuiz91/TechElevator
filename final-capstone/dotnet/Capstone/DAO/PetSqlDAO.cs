@@ -63,8 +63,8 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO pets (breed, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by )" +
-                                                    "VALUES (@breed, @age, @name, @img, @isAdopted, @arrivalDate, @adoptionDate, @adoptedBy);", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO pets (breed, pet_age, pet_name, pet_image, is_adopted, arrival_date) " +
+                                                    "VALUES (@breed, @age, @name, @img, @isAdopted, @arrivalDate);", conn);
                     cmd.Parameters.AddWithValue("@breed", petToAdd.Breed);
                     cmd.Parameters.AddWithValue("@age", Convert.ToInt32(petToAdd.Age));
                     cmd.Parameters.AddWithValue("@name", petToAdd.Name);
@@ -72,8 +72,6 @@ namespace Capstone.DAO
                     int adoptedBoolToInt = petToAdd.IsAdopted == false ? 0 : 1;
                     cmd.Parameters.AddWithValue("@isAdopted", adoptedBoolToInt);
                     cmd.Parameters.AddWithValue("@arrivalDate", petToAdd.ArrivalDate);
-                    cmd.Parameters.AddWithValue("@adoptionDate", petToAdd.AdoptionDate);
-                    cmd.Parameters.AddWithValue("@adoptedBy", petToAdd.AdoptedBy);
                     int rowsAffected = cmd.ExecuteNonQuery();
                    // cmd = new SqlCommand("SELECT MAX(pet_id) FROM pets", conn);
                     

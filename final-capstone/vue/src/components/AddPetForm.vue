@@ -11,7 +11,7 @@
         <b-form-group inline class = "pet-info" label="Name:" label-for="petName" description="(Required)">
           <b-form-input 
             id="petName"
-            v-model="newPet.pet_name"
+            v-model="newPet.name"
             required
             placeholder="Fluffer"
           ></b-form-input>
@@ -26,21 +26,21 @@
       <b-form-group class = "pet-info" label="Age:" label-for="petAge">
           <b-form-input 
             id="petAge"
-            v-model="newPet.pet_age"
+            v-model="newPet.age"
             placeholder="3"
           ></b-form-input>
       </b-form-group>
       <b-form-group class = "pet-info" label="Image:" label-for="petImg">
           <b-form-input 
             id="petImg"
-            v-model="newPet.pet_image"
+            v-model="newPet.picture"
             placeholder="https://pic.com/1/myBaby.jpeg"
           ></b-form-input>
       </b-form-group>
       <b-form-group class = "pet-info" label="Arrival Date:" label-for="arrivalDate" description="(Required)">
           <b-form-input 
             id="arrivalDate"
-            v-model="newPet.arrival_date"
+            v-model="newPet.arrivalDate"
             required
             placeholder="01/01/2020"
           ></b-form-input>
@@ -67,13 +67,14 @@ name: 'add-pet-form',
 data() {
     return {
       newPet : {
-        pet_age : '',
+        age : '',
         breed : '',
-        pet_name : '',
-        pet_image : '',
-        is_adopted : 0,
-        arrival_date : '',
+        name : '',
+        picture : '',
+        isAdopted : 0,
+        arrivalDate : '',
     },
+    returnResponse: '',
     addAnotherPet: false,
     addPetErrors: false,
     addPetErrorMessage: 'There were problems adding this pet.',
@@ -84,9 +85,11 @@ methods: {
         PetsService
             .addPet(this.newPet)
             .then(response => {
-                    if (response.status == 201 && !this.addAnotherPet) {
-                        this.$router.push('volunteer-portal');
-                    }     
+                this.returnResponse = response.data;
+                if (response.status && this.addAnotherPet == false) {
+                    this.$store.commit('TOGGLE_ADD_PET_FORM');
+                }
+                      
                 })
             .catch(error => {
                 const response = error.response;
