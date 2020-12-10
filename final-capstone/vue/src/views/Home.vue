@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home bg">
     <div
         class="alert alert-success"
         role="alert"
@@ -19,3 +19,8 @@ export default {
   name: 'home',
 };
 </script>
+<style scoped>
+ .bg {
+    background-repeat: repeat-y;
+ }
+</style>

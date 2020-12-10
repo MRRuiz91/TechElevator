@@ -85,6 +85,7 @@ export default {
   },
   methods: {
     register() {
+      this.clearErrors();
       authService
           .apply(this.application)
           .then((response) => {
