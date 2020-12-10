@@ -1,5 +1,11 @@
 <template>
   <div class="home">
+    <div
+        class="alert alert-success"
+        role="alert"
+        v-if="this.$route.query.registration"
+      >Thank you for applying, an administrator will review your application and notify you of your status.
+    </div>
     <center><h1>Little Buddies looking for a 'Fur'ever Home</h1></center>
     <pet-list/>
   </div>

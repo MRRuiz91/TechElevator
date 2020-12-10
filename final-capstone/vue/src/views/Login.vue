@@ -7,11 +7,6 @@
         role="alert"
         v-if="invalidCredentials"
       >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
       <div class=login >
               <div class="row mb-3">
       <div class="col-sm-4">

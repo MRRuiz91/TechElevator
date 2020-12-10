@@ -88,6 +88,33 @@ namespace Capstone.DAO
 
             return u;
         }
+        public Application GetApplicationsByUsername(string username)
+        {
+            Application returnApp = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT application_id, username, email, phone_number, prompt_response, first_name, last_name, status FROM applications WHERE username = @username AND status = 1", conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows && reader.Read())
+                    {
+                        returnApp = GetApplicationFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return returnApp;
+        }
 
         bool IUserDAO.AddApplication(Application app)
         {
@@ -126,6 +153,22 @@ namespace Capstone.DAO
             }
 
             return result;
+        }
+        private Application GetApplicationFromReader(SqlDataReader reader)
+        {
+            Application a = new Application()
+            {
+                ApplicationId = Convert.ToInt32(reader["application_id"]),
+                Username = Convert.ToString(reader["username"]),
+                Email = Convert.ToString(reader["email"]),
+                Phone = Convert.ToString(reader["phone_number"]),
+                PromptResponse = Convert.ToString(reader["prompt_response"]),
+                FirstName = Convert.ToString(reader["first_name"]),
+                LastName = Convert.ToString(reader["last_name"]),
+                Status = Convert.ToInt32(reader["status"])
+            };
+
+            return a;
         }
     }
 }

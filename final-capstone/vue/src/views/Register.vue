@@ -8,13 +8,12 @@
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
         </div>
-        <b-form-group class = "sr-only" label="Username:" label-for="username">
+        <b-form-group class = "contact-info" label="Username:" label-for="username">
           <b-form-input 
             id="username"
             v-model="application.username"
             required
             placeholder="Enter username here"
-            autofocus
           ></b-form-input>
         </b-form-group>
         <b-form-group class = "contact-info" label="Email address:" label-for="email">
@@ -91,7 +90,7 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
+                path: '/home',
                 query: { registration: 'success' },
               });
             }
