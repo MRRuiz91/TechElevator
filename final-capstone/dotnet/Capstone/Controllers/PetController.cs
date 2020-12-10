@@ -21,7 +21,13 @@ namespace Capstone.Controllers
         public List<Pet> GetAvailablePets()
         {
             //petDao = new PetSqlDAO();
-            return PetDao.GetAllPets();
+            return PetDao.GetAvailablePets();
+        }
+
+        [HttpPost("pets")]
+        public bool AddNewPet(Pet pet)
+        {
+            return PetDao.AddAPet(pet);
         }
 
     }

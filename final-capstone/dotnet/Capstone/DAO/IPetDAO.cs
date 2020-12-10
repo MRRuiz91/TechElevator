@@ -8,6 +8,8 @@ namespace Capstone.DAO
 {
     public interface IPetDAO
     {
-        List<Pet> GetAllPets();
+        List<Pet> GetAvailablePets();
+
+        bool AddAPet(Pet petToAdd);
     }
 }
