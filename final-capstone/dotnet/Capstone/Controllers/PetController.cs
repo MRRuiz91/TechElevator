@@ -18,7 +18,7 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("pets")]
-        public List<Pet> GetAllPets()
+        public List<Pet> GetAvailablePets()
         {
             //petDao = new PetSqlDAO();
             return PetDao.GetAllPets();
