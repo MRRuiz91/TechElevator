@@ -15,7 +15,7 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public List<Pet> GetAllPets()
+        public List<Pet> GetAvailablePets()
         {
             List<Pet> allPets = new List<Pet>();
             try
@@ -54,5 +54,43 @@ namespace Capstone.DAO
 
             return p;
         }
+
+        public bool AddAPet(Pet petToAdd)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO pets (breed, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by )" +
+                                                    "VALUES (@breed, @age, @name, @img, @isAdopted, @arrivalDate, @adoptionDate, @adoptedBy);", conn);
+                    cmd.Parameters.AddWithValue("@breed", petToAdd.Breed);
+                    cmd.Parameters.AddWithValue("@age", Convert.ToInt32(petToAdd.Age));
+                    cmd.Parameters.AddWithValue("@name", petToAdd.Name);
+                    cmd.Parameters.AddWithValue("@img", petToAdd.Picture);
+                    int adoptedBoolToInt = petToAdd.IsAdopted == false ? 0 : 1;
+                    cmd.Parameters.AddWithValue("@isAdopted", adoptedBoolToInt);
+                    cmd.Parameters.AddWithValue("@arrivalDate", petToAdd.ArrivalDate);
+                    cmd.Parameters.AddWithValue("@adoptionDate", petToAdd.AdoptionDate);
+                    cmd.Parameters.AddWithValue("@adoptedBy", petToAdd.AdoptedBy);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                   // cmd = new SqlCommand("SELECT MAX(pet_id) FROM pets", conn);
+                    
+                    if (rowsAffected > 0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+            return result;
+
+
+        }
+       
     }
 }
