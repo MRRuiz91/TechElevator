@@ -5,7 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import BrowsePets from '../views/BrowsePets.vue'
+import VolunteerPortal from '../views/VolunteerPortal.vue'
+import AddPet from '../views/AddPet.vue'
 
 Vue.use(Router)
 
@@ -31,11 +32,11 @@ const router = new Router({
       }
     },
     {
-      path: '/browse-pets',
-      name: 'browse-pets',
-      component: BrowsePets,
+      path: '/volunteer-portal',
+      name: 'volunteer-portal',
+      component: VolunteerPortal,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -60,6 +61,14 @@ const router = new Router({
       component: Register,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/add-pet",
+      name: "addPet",
+      component: AddPet,
+      meta: {
+        requiresAuth: true
       }
     }
   ]
