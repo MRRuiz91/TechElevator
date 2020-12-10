@@ -22,7 +22,12 @@
           Login
         </b-link> |
 
-        <b-link class = "text-dark text-decoration-none" to="register">
+        <b-link class = "text-dark text-decoration-none" to="volunteer-portal" v-if="$store.state.token != ''">
+          <img src="..\assets\pawPrint.png" class="img" height="20 px"/>
+          Volunteer Portal
+        </b-link>
+
+        <b-link class = "text-dark text-decoration-none" to="register" v-else>
           <img src="..\assets\pawPrint.png" class="img" height="20 px"/>
           Register
         </b-link>
