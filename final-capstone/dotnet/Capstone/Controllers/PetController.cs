@@ -24,8 +24,8 @@ namespace Capstone.Controllers
             return PetDao.GetAvailablePets();
         }
 
-        [HttpPost("pets")]
-        public bool AddNewPet(Pet pet)
+        [HttpPost("/pets")]
+        public bool AddNewPet([FromBody]Pet pet)
         {
             return PetDao.AddAPet(pet);
         }

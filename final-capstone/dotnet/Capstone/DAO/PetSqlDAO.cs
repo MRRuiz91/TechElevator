@@ -74,7 +74,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@arrivalDate", petToAdd.ArrivalDate);
                     cmd.Parameters.AddWithValue("@adoptionDate", petToAdd.AdoptionDate);
                     cmd.Parameters.AddWithValue("@adoptedBy", petToAdd.AdoptedBy);
-                    int rowsAffected = Convert.ToInt32(cmd.ExecuteScalar());
+                    int rowsAffected = cmd.ExecuteNonQuery();
                    // cmd = new SqlCommand("SELECT MAX(pet_id) FROM pets", conn);
                     
                     if (rowsAffected > 0)
