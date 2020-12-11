@@ -15,7 +15,7 @@ export default {
         PetCard
     },
     created() {
-        PetsService.getAllPets().then(response => {
+        PetsService.getAvailablePets().then(response => {
             this.$store.commit("UPDATE_AVAILABLE_PETS", response.data)
         })/*.catch(error=>{
 

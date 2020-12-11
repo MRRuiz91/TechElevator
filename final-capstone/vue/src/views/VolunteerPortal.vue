@@ -8,22 +8,18 @@
  <div class="col-sm-1">
  </div>
  <div class="col-sm-4"> 
-     <b-button v-b-toggle.collapse-1 variant="warning">Add Pet</b-button>
-     <b-button v-b-toggle.collapse-2 variant="warning">Update Pet</b-button>
-     <b-collapse id="collapse-1" v-model="$store.state.showAddPetForm">
-        <b-card>
-            <add-pet-form />
+        <b-card class="bg-secondary text-light">
+            <b-tabs>
+                <b-tab title="Add a New Pet">
+                    <add-pet-form />
+                </b-tab>
+                <b-tab title="Pet Roster" active>
+                    <pet-list />
+                </b-tab>
+            </b-tabs>
         </b-card>
-    </b-collapse> 
-    <b-collapse id="collapse-2" v-model="$store.state.showUpdatePetForm">
-        <b-card>
-            <h1>hi</h1>
-        </b-card>
-    </b-collapse> 
  </div>
- <div class="col-sm-1">
- </div>
- <div class="col-sm-1">
+ <div class="col-sm-2">
  </div>
  <div class="volunteerDirectory col-sm-4">
         <b-card >
@@ -40,9 +36,10 @@
 </template>
 <script>
 import AddPetForm from '../components/AddPetForm.vue';
+import PetList from '../components/PetList.vue';
 
 export default {
-    components: { AddPetForm },
+    components: { AddPetForm, PetList },
     data() {
         return {
         }
