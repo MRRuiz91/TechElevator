@@ -35,12 +35,30 @@ namespace Capstone.DAO
                     }
                 }
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 throw;
             }
 
             return returnApp;
+        }
+        public int GetNewestApplicationId()
+        {
+            int newAppId = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT MAX(application_id) from applications", conn);
+                    newAppId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+            return newAppId;
         }
 
         public bool AddApplication(Application app)

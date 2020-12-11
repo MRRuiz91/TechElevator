@@ -11,7 +11,7 @@ namespace CapstoneTests.DAL
     public class PetSQLDaoTests: AnimalDAOTests
     {
         [TestMethod]
-        public void GetAllPetTest()
+        public void GetAvailablePetsTests()
         {
             //Arrange
             IPetDAO dao = new PetSqlDAO(ConnectionString);
@@ -44,6 +44,14 @@ namespace CapstoneTests.DAL
             pet.AdoptedBy = "Matt Jorgensen";
             dao.AddAPet(pet);
             return pet;
+        }
+        [TestMethod]
+        public void UpdatePetTests()
+        {
+            PetSqlDAO dao = new PetSqlDAO(ConnectionString);
+            Pet petToUpdate = dao.GetPetById(dao.GetNewestPetId());
+            petToUpdate.Age = "100";
+            Assert.AreEqual(true, dao.UpdatePetListing(petToUpdate));
         }
     }
 }
