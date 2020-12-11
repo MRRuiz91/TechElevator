@@ -166,5 +166,30 @@ namespace Capstone.DAO
             }
             return newPetId;
         }
+
+        public List<Pet> GetEveryPetEver()
+        {
+            List<Pet> allPets = new List<Pet>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT pet_id, breed, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by FROM pets", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Pet p = GetPetFromReader(reader);
+                        allPets.Add(p);
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+            return allPets;
+
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace Capstone.DAO
         bool AddAPet(Pet petToAdd);
         Pet GetPetById(int id);
         bool UpdatePetListing(Pet petToUpdate);
+        List<Pet> GetEveryPetEver();
     }
 }

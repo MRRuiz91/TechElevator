@@ -25,15 +25,38 @@ namespace Capstone.Controllers
             return PetDao.GetAvailablePets();
         }
 
-        [HttpPost("pets")]
-        public bool AddNewPet(Pet pet)
+        [HttpGet("pets/all")]
+        public List<Pet> GetEveryPet()
         {
-            return PetDao.AddAPet(pet);
+            return PetDao.GetEveryPetEver();
+        }
+
+        [HttpPost("pets")]
+        public ActionResult<bool> AddNewPet(Pet pet)
+        {
+            bool result = PetDao.AddAPet(pet);
+
+            if (result == false)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Created($"/pets/{pet.PetId}", result);
+            }
+            
         }
         [HttpPut("pets/{petToUpdate.id}")]
-        public bool UpdatePetById (Pet petToUpdate)
+        public ActionResult<bool> UpdatePetById (Pet petToUpdate)
         {
-            return PetDao.UpdatePetListing(petToUpdate);
+            Pet existing = PetDao.GetPetById((int)petToUpdate.PetId);
+            if (existing == null) //we didn't find anything matching that id
+            {
+                return NotFound("pet not found");
+            }
+            bool result = PetDao.UpdatePetListing(petToUpdate);
+            return Ok(result);
+           
         }
     }
 }
