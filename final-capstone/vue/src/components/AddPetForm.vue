@@ -38,12 +38,12 @@
           ></b-form-input>
       </b-form-group>
       <b-form-group class = "pet-info" label="Arrival Date:" label-for="arrivalDate" description="(Required)">
-          <b-form-input 
+          <b-form-datepicker 
             id="arrivalDate"
             v-model="newPet.arrivalDate"
             required
             placeholder="01/01/2020"
-          ></b-form-input>
+          ></b-form-datepicker>
       </b-form-group>
       <b-form-group class="submission-details" label="Add another pet?" label-for="anotherPet">
           <b-form-checkbox 
