@@ -11,5 +11,7 @@ namespace Capstone.DAO
         List<Pet> GetAvailablePets();
 
         bool AddAPet(Pet petToAdd);
+        Pet GetPetById(int id);
+        bool UpdatePetListing(Pet petToUpdate);
     }
 }

@@ -16,7 +16,7 @@ namespace CapstoneTests.DAL
             IApplicationDAO dao = new ApplicationSqlDAO(ConnectionString);
 
             Application app = dao.GetApplicationsByUsername("catluvr");
-            Assert.AreEqual(1, app.ApplicationId);
+            Assert.AreEqual(dao.GetNewestApplicationId(), app.ApplicationId);
         }
 
         [TestMethod]

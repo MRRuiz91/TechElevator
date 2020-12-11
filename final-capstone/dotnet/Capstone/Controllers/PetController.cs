@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Capstone.Controllers
 {
+    [ApiController]
     public class PetController : ControllerBase
     {
         private readonly IPetDAO PetDao;
@@ -24,11 +25,15 @@ namespace Capstone.Controllers
             return PetDao.GetAvailablePets();
         }
 
-        [HttpPost("/pets")]
-        public bool AddNewPet([FromBody]Pet pet)
+        [HttpPost("pets")]
+        public bool AddNewPet(Pet pet)
         {
             return PetDao.AddAPet(pet);
         }
-
+        [HttpPut("pets/{petToUpdate.id}")]
+        public bool UpdatePetById (Pet petToUpdate)
+        {
+            return PetDao.UpdatePetListing(petToUpdate);
+        }
     }
 }
