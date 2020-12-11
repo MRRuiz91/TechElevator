@@ -1,8 +1,6 @@
 <template>
 <div class=" row">
-    <div class="col-sm-4">
-    </div>
-    <div class="col-sm-4">
+    <div class="col-sm">
         <div class="text-center">
           <h1>New Animal Form</h1>
           <p>Lets find this animal a loving home!</p>
@@ -12,6 +10,12 @@
           role="alert"
           v-if="addPetErrors"
           >{{addPetErrorMessage}}
+        </div>
+        <div
+          class="alert alert-success"
+          role="alert2"
+          v-if="addPetSuccess"
+          >Pet Successfully Added!
         </div>
       <b-form  class="add-pet-form" @submit.prevent="addPet">
         <b-form-group inline class = "pet-info" label="Name:" label-for="petName" description="(Required)">
@@ -50,19 +54,14 @@
             required
             placeholder="01/01/2020"
           ></b-form-datepicker>
-      </b-form-group>
-      <b-form-group class="submission-details" label="Add another pet?" label-for="anotherPet">
-          <b-form-checkbox 
-            id="anotherPet" 
-            v-model="addAnotherPet"
-          ></b-form-checkbox>  
-      </b-form-group>
+      </b-form-group>  
       <b-button type="submit" variant="warning">
             Submit
       </b-button>
+      <b-button type="clear" variant="warning" @click="clearForm">
+            Clear
+      </b-button>
       </b-form>
-    </div>
-    <div class="col-sm-4">
     </div>
 </div>
 </template>
@@ -73,15 +72,14 @@ name: 'add-pet-form',
 data() {
     return {
       newPet : {
-        age : '',
+        age : 0,
         breed : '',
         name : '',
         picture : '',
         isAdopted : 0,
         arrivalDate : '',
     },
-    returnResponse: '',
-    addAnotherPet: false,
+    addPetSuccess: false,
     addPetErrors: false,
     addPetErrorMessage: 'There were problems adding this pet.',
   };
@@ -89,17 +87,13 @@ data() {
 methods: {
     addPet() {
       let ageInt = parseInt(this.newPet.age)
-      
       if (!isNaN(ageInt) && ageInt >= 0){
         PetsService
             .addPet(this.newPet)
             .then(response => {
-                this.returnResponse = response.data;
-                if (response.status && this.addAnotherPet == false) {
-                    this.$store.commit('TOGGLE_ADD_PET_FORM');
-                }
-                      
-                })
+                  this.addPetSuccess = response;
+                  this.clearform();
+            })
             .catch(error => {
                 const response = error.response;
                 this.addPetErrors = true;
@@ -113,6 +107,18 @@ methods: {
         this.addPetErrorMessage = "Age must an integer please try again";
       }
   },
+  clearForm() {
+        this.newPet.age = 0,
+        this.newPet.breed = ''
+        this.newPet.name = '';
+        this.newPet.picture = '';
+        this.newPet.isAdopted = 0;
+        this.newPet.arrivalDate = '';
+        this.addPetSuccess = false;
+        this.addPetErrors = false;
+        this.addPetErrorMessage ='There adding this pet was unsuccessful.';
+    },
+  
 }
 };
 </script>

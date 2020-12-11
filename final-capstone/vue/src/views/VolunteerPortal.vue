@@ -1,10 +1,13 @@
 <template>
  <div class="volunteerPortal">
-     <h1></h1>
-  <div class="adminView" v-if="$store.state.user.role === 'admin'">
-     <h1>admin see dis</h1>
- </div>   
- <div> 
+     <div class="text-center text-white">
+        <h1>Completing Families One Furry Friend at a Time</h1>
+    </div>   
+ 
+ <div class="row">
+ <div class="col-sm-1">
+ </div>
+ <div class="col-sm-4"> 
      <b-button v-b-toggle.collapse-1 variant="warning">Add Pet</b-button>
      <b-button v-b-toggle.collapse-2 variant="warning">Update Pet</b-button>
      <b-collapse id="collapse-1" v-model="$store.state.showAddPetForm">
@@ -18,10 +21,20 @@
         </b-card>
     </b-collapse> 
  </div>
- <div class="volunteerDirectory">
-        <b-card>
+ <div class="col-sm-1">
+ </div>
+ <div class="col-sm-1">
+ </div>
+ <div class="volunteerDirectory col-sm-4">
+        <b-card >
             <h1>volunteer Directory</h1>
+            <div class="adminView" v-if="$store.state.user.role === 'admin'">
+            <h1>admin see dis</h1>
+            </div>
         </b-card>
+ </div>
+ <div class="col-sm-1">
+ </div>
  </div>
 </div>
 </template>

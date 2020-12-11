@@ -1,7 +1,7 @@
 <template>
   <div>
       <add-pet-form />
-</div>
+  </div>
 </template>
 <script>
 import AddPetForm from '../components/AddPetForm.vue'

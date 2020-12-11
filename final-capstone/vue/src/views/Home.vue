@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg">
+  <div class="home bg text-white">
     <div
         class="alert alert-success"
         role="alert"
