@@ -7,6 +7,12 @@
           <h1>New Animal Form</h1>
           <p>Lets find this animal a loving home!</p>
         </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          v-if="addPetErrors"
+          >{{addPetErrorMessage}}
+        </div>
       <b-form  class="add-pet-form" @submit.prevent="addPet">
         <b-form-group inline class = "pet-info" label="Name:" label-for="petName" description="(Required)">
           <b-form-input 
@@ -82,6 +88,9 @@ data() {
 },
 methods: {
     addPet() {
+      let ageInt = parseInt(this.newPet.age)
+      
+      if (!isNaN(ageInt) && ageInt >= 0){
         PetsService
             .addPet(this.newPet)
             .then(response => {
@@ -98,7 +107,12 @@ methods: {
                     this.addPetErrorMessage = 'Bad Request: Validation Errors';
                 }
             });
-        },
+      }
+      else {
+        this.addPetErrors = true;
+        this.addPetErrorMessage = "Age must an integer please try again";
+      }
+  },
 }
 };
 </script>

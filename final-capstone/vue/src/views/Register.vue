@@ -3,6 +3,7 @@
     <div class="col-sm-4">
     </div>
     <div class="col-sm-4">
+      <b-card class="bg-secondary text-light">
       <b-form class="form-register" @submit.prevent="register">
         <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -53,6 +54,7 @@
           Submit
         </b-button>
       </b-form>
+      </b-card>
     </div>
     <div class="col-sm-4">
     </div>

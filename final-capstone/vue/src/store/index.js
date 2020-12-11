@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     availablePets: [],
     showAddPetForm: false,
+    showUpdatePetForm: false,
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
