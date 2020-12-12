@@ -1,9 +1,15 @@
 <template>
-    <b-table striped hover :items="$store.state.allPets" :fields="fields" class="bg-dark text-light">
+    <b-table 
+        striped 
+        hover 
+        selectable
+        :select-mode='single' 
+        :items="$store.state.allPets" 
+        :fields="fields" 
+        @row-selected="onRowSelected"
+        responsive="sm"
+        class="bg-dark text-light">
         <template #cell(updatePet)>
-        <b-button size="sm" class="mr-2 bg-success">1
-          <router-link :to="{ name : 'updatePet' }">Update</router-link>
-        </b-button>
         </template>
     </b-table>
 
@@ -17,6 +23,7 @@ export default {
   // components: { UpdatePetForm },
     data () {
        return {
+            modes: ['single'],
             fields : [ 
                 {
                     key: 'arrivalDate',
@@ -39,13 +46,20 @@ export default {
                     label: 'Update Pet',
                     sortable:false
                 }
-                ]
+                ],
+                selected: []
        }
     },
     created() {
         PetsService.getAllPets().then(response => {
             this.$store.commit("UPDATE_PET_ROSTER", response.data)
         })//.catch(error => {});
+    },
+    methods: {
+        onRowSelected (items) {
+            this.selected = items;
+            this.$store.commit('SELECT_PET', this.selected)
+        }
     }
 }
 </script>

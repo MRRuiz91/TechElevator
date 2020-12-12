@@ -23,43 +23,43 @@
             id="petName"
             v-model="petToUpdate.name"
             required
-            v-bind:placeholder="pet.name"
+            v-bind:placeholder="petToUpdate.name"
           ></b-form-input>
       </b-form-group>
       <b-form-group class = "pet-info" label="Breed:" label-for="breed">
           <b-form-input 
             id="breed"
             v-model="petToUpdate.breed"
-            v-bind:placeholder="pet.breed"
+            v-bind:placeholder="petToUpdate.breed"
           ></b-form-input>
       </b-form-group>
       <b-form-group class = "pet-info" label="Age:" label-for="petAge">
           <b-form-input 
             id="petAge"
             v-model="petToUpdate.age"
-            v-bind:placeholder="pet.age"
+            v-bind:placeholder="petToUpdate.age"
           ></b-form-input>
       </b-form-group>
       <b-form-group class = "pet-info" label="Image:" label-for="petImg">
           <b-form-input 
             id="petImg"
             v-model="petToUpdate.picture"
-            v-bind:placeholder="pet.picture"
+            v-bind:placeholder="petToUpdate.picture"
           ></b-form-input>
       </b-form-group>
-      <b-form-group class = "pet-info" label="Arrival Date:" label-for="arrivalDate" description="(Required)">
+      <b-form-group class = "pet-info" label="Arrival Date:" label-for="arrivalDate">
           <b-form-datepicker 
             id="arrivalDate"
             v-model="petToUpdate.arrivalDate"
             required
-            v-bind:placeholder="pet.arrivalDate"
+            v-bind:placeholder="petToUpdate.arrivalDate"
           ></b-form-datepicker>
       </b-form-group>
-      <b-form-group class = "pet-info" label="Adoption Date:" label-for="adoptionDate" description="(Required)">
+      <b-form-group class = "pet-info" label="Adoption Date:" label-for="adoptionDate">
           <b-form-datepicker 
             id="adoptionDate"
             v-model="petToUpdate.adoptionDate"
-            v-bind:placeholder="pet.adoptionDate"
+            v-bind:placeholder="petToUpdate.adoptionDate"
           ></b-form-datepicker>
       </b-form-group>
      <b-form-group class = "pet-info" label="Adopted by:" label-for="adoptedBy" description="(Required)">
@@ -88,9 +88,9 @@
 </template>
 
 <script>
-import PetsService from '../services/PetsService'
+import PetsService from '../services/PetsService'  
+
 export default {
-    props:['pet'],
     data() {
         return {
             petToUpdate: {
@@ -102,7 +102,8 @@ export default {
                 arrivalDate : '',
                 adoptionDate : '',
                 adoptedBy : '',
-            }
+            },
+            placeholderpet: {},
         }
     },
     methods: {

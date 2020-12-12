@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     availablePets: [],
     allPets: [],
+    selectedPet : null,
     showAddPetForm: false,
     showUpdatePetForm: false,
   },
@@ -55,5 +56,8 @@ export default new Vuex.Store({
       let petIndex = state.allPets.findIndex(pet => {pet.id === petToUpdate.id});
       state.allPets[petIndex] = petToUpdate;
     },
+    SELECT_PET(state, selected) {
+      state.selectedPet = selected[0];
+    }
   }
 })
