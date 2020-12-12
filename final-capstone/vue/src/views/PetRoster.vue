@@ -1,30 +1,23 @@
 <template>
-    <b-table 
-        striped 
-        hover 
-        selectable
-        :select-mode='single' 
-        :items="$store.state.allPets" 
-        :fields="fields" 
-        @row-selected="onRowSelected"
-        responsive="sm"
-        class="bg-dark text-light">
-        <template #cell(updatePet)>
-        </template>
-    </b-table>
+    <b-table class="bg-dark text-light"
+        striped hover selectable :select-mode='single' 
+        :items="$store.state.allPets" :fields="fields" 
+        @row-selected="onRowSelected" responsive="sm"
+    >
 
+        <template #cell(updatePet)></template>
+    </b-table>
 </template>
 
 <script>
 // import UpdatePetForm from '../components/UpdatePetForm.vue'
 import PetsService from '../services/PetsService'
-
 export default {
-  // components: { UpdatePetForm },
+    //components: { UpdatePetForm },
     data () {
-       return {
+        return {
             modes: ['single'],
-            fields : [ 
+            fields: [ 
                 {
                     key: 'arrivalDate',
                     sortable: true
@@ -46,9 +39,9 @@ export default {
                     label: 'Update Pet',
                     sortable:false
                 }
-                ],
-                selected: []
-       }
+            ],
+            selected: []
+        }
     },
     created() {
         PetsService.getAllPets().then(response => {
@@ -65,5 +58,4 @@ export default {
 </script>
 
 <style>
-
 </style>

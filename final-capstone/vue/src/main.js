@@ -5,10 +5,7 @@ import store from './store/index'
 import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import Vuelidate from 'vuelidate'
-
-
-
-
+//bootstraps
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -20,7 +17,5 @@ Vue.config.productionTip = false
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+  router, store, render: h => h(App)
 }).$mount('#app')
