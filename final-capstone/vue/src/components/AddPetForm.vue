@@ -18,7 +18,7 @@
           >Pet Successfully Added!
         </div>
       <b-form  class="add-pet-form" @submit.prevent="addPet">
-        <b-form-group inline class = "pet-info" label="Name:" label-for="petName" description="(Required)">
+        <b-form-group inline class = "pet-info" label="Name:" label-for="petName">
           <b-form-input 
             id="petName"
             v-model="newPet.name"

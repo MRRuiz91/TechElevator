@@ -1,6 +1,5 @@
 <template>
 <div class= "pet-container">
-    
   <pet-card class= "card" v-bind:pet="pet"  v-for="pet in $store.state.availablePets" v-bind:key="pet.petId"/>
 </div>
 </template>

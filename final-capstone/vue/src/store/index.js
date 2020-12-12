@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     availablePets: [],
+    allPets: [],
     showAddPetForm: false,
     showUpdatePetForm: false,
   },
@@ -44,8 +45,15 @@ export default new Vuex.Store({
     UPDATE_AVAILABLE_PETS(state, petsNotAdopted) {
       state.availablePets = petsNotAdopted;
     },
+    UPDATE_PET_ROSTER(state, allPets) {
+      state.allPets = allPets;
+    },
     TOGGLE_ADD_PET_FORM(state) {
       state.showAddPetForm = !state.showAddPetForm;
-    }
+    },
+    UPDATE_IND_PET(state,petToUpdate) {
+      let petIndex = state.allPets.findIndex(pet => {pet.id === petToUpdate.id});
+      state.allPets[petIndex] = petToUpdate;
+    },
   }
 })

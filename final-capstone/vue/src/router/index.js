@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import VolunteerPortal from '../views/VolunteerPortal.vue'
 import AddPet from '../views/AddPet.vue'
+import updatePetForm from '../components/UpdatePetForm.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/add-pet",
       name: "addPet",
       component: AddPet,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/update-pet',
+      name: "updatePet",
+      component: updatePetForm,
       meta: {
         requiresAuth: true
       }

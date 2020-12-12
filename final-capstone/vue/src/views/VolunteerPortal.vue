@@ -14,7 +14,7 @@
                     <add-pet-form />
                 </b-tab>
                 <b-tab title="Pet Roster" active>
-                    <pet-list />
+                    <pet-roster />
                 </b-tab>
             </b-tabs>
         </b-card>
@@ -36,10 +36,10 @@
 </template>
 <script>
 import AddPetForm from '../components/AddPetForm.vue';
-import PetList from '../components/PetList.vue';
+import PetRoster from '../views/PetRoster.vue';
 
 export default {
-    components: { AddPetForm, PetList },
+    components: { AddPetForm, PetRoster },
     data() {
         return {
         }

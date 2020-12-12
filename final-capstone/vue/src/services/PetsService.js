@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-
+        //Clarify with the Matts and Katie on whether or not to keep 2 separate GET methods
     getAvailablePets() {
         return axios.get('/pets');
     },
