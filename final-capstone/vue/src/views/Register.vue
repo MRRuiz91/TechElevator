@@ -3,7 +3,7 @@
     <div class="col-sm-4"></div>
 
     <div class="col-sm-4">
-      <b-card class="bg-secondary text-white">
+      <b-card class="bg-dark text-white border">
         <register-form />
       </b-card>
     </div>

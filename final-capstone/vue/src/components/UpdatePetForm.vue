@@ -1,5 +1,5 @@
 <template>
-  <div class=" row">
+  <div class="row">
     <div class="col-sm">
 
       <div class="text-center">
@@ -43,8 +43,8 @@
           <b-form-input id="isAdopted" v-model="petToUpdate.isAdopted" placeholder="Time for a new home?"></b-form-input>
         </b-form-group>  
 
-        <b-button type="submit" variant="warning">Submit</b-button>
-        <b-button type="clear" variant="warning" @click="clearForm">Clear</b-button>
+        <b-button type="submit" variant="dark border">Submit</b-button>
+        <b-button type="clear" variant="dark border" @click="clearForm">Clear</b-button>
       </b-form>
     </div>
   </div>

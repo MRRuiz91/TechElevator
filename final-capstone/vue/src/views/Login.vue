@@ -1,5 +1,6 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="text-center col-sm-4">
+  <b-card class="bg-dark text-white border">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal text-white">Please Sign In</h1>
       <div
@@ -46,11 +47,12 @@
       </div>
       </div>
       <div>
-      <b-button class="bg-info" type="submit">Sign in</b-button>
+      <b-button class="bg-dark" type="submit">Sign in</b-button>
       <br>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       </div>
     </form>
+    </b-card>
   </div>
 </template>
 

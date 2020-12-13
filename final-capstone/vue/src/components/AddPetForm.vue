@@ -1,5 +1,5 @@
 <template>
-  <div class=" row">
+  <div class="row">
     <div class="col-sm">
 
         <div class="text-center">
@@ -27,12 +27,12 @@
             <b-form-input id="petImg" v-model="newPet.picture" placeholder="https://pic.com/1/myBaby.jpeg"></b-form-input>
           </b-form-group>
 
-          <b-form-group class = "pet-info" label="Arrival Date:" label-for="arrivalDate" description="(Required)">
+          <b-form-group class = "pet-info" label="Arrival Date:" label-for="arrivalDate">
             <b-form-datepicker id="arrivalDate" v-model="newPet.arrivalDate" required placeholder="01/01/2020"></b-form-datepicker>
           </b-form-group> 
 
-          <b-button type="submit" variant="warning">Submit</b-button>
-          <b-button type="clear" variant="warning" @click="clearForm">Clear</b-button>
+          <b-button type="submit" variant="dark border">Submit</b-button>
+          <b-button type="clear" variant="dark border" @click="clearForm">Clear</b-button>
         </b-form>
     </div>
   </div>

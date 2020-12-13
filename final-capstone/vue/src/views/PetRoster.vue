@@ -1,5 +1,5 @@
 <template>
-    <b-table class="bg-dark text-light"
+    <b-table class="bg-dark text-white" variant="text-white"
         striped hover selectable :select-mode='single' 
         :items="$store.state.allPets" :fields="fields" 
         @row-selected="onRowSelected" responsive="sm"
@@ -34,10 +34,6 @@ export default {
                     key: 'isAdopted',
                     label: 'Has a Home',
                     sortable: true
-                }, 
-                {   key: 'updatePet',
-                    label: 'Update Pet',
-                    sortable:false
                 }
             ],
             selected: []

@@ -8,15 +8,15 @@
         <div class="col-sm-1"></div>
 
         <div class="col-sm-4"> 
-            <b-card class="bg-secondary text-white">
-                <b-tabs justified class=" bg-success text-white">
+            <b-card class="bg-dark border text-white">
+                <b-tabs justified class="bg-dark border text-white">
                     <b-tab title="Pet Roster" active>
                         <pet-roster />
                     </b-tab>
-                    <b-tab title="Add a New Pet">
+                    <b-tab title="New Pet">
                         <add-pet-form />
                     </b-tab>
-                    <b-tab title="Update Selected Pet" v-bind:disabled=petSelected>
+                    <b-tab title="Update Pet" v-bind:disabled=petSelected>
                         <update-pet-form />
                     </b-tab>
                 </b-tabs>
