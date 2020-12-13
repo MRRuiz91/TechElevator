@@ -1,12 +1,11 @@
 <template>
   <b-navbar class="text-white" toggleable="med" variant="dark" type="dark border">
-      <div><img class="img" src ="..\assets\MarvelousZoo.png" height="200px"/>
+      <div><img class="img" src ="..\assets\MarvelousZoo.png" height="200px"/></div>
 
+      <div>
         <b-link class = "text-white text-decoration-none" to="home"> 
         <img src="..\assets\pawPrint.png" class="img" height="20 px"/>Home</b-link>
           |
-
-     
         <b-link class = "text-white text-decoration-none" to="logout" v-if="$store.state.token != ''">
         <img src="..\assets\pawPrint.png" class="img" height="20 px"/>Logout</b-link>
           

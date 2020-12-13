@@ -7,40 +7,46 @@
         <p>Need to change some things?</p>
       </div>
 
-        <!--<div class="alert alert-danger" role="alert" v-if="updatePetErrors">{{addPetErrorMessage}}</div>
-        <div class="alert alert-success" role="alert2" v-if="updatePetErrors">Pet Successfully Updated Added!</div> -->
+        <!--<div class="alert alert-danger" role="alert" v-if="updatePetErrors">{{addPetErrorMessage}}</div>-->
+      <div class="alert alert-success" role="alert" v-if="updatePetSuccess">Pet Successfully Updated!</div> 
 
       <b-form class="update-pet-form" @submit.prevent="updatePet">
         <b-form-group inline class = "pet-info" label="Name:" label-for="petName" description="(Required)">
-          <b-form-input id="petName" v-model="petToUpdate.name" required v-bind:placeholder="petToUpdate.name"></b-form-input>
+          <b-form-input id="petName" v-model="$store.state.selectedPet.name" required v-bind:placeholder="$store.state.selectedPet.name"></b-form-input>
         </b-form-group>
 
         <b-form-group class = "pet-info" label="Breed:" label-for="breed">
-          <b-form-input id="breed" v-model="petToUpdate.breed" v-bind:placeholder="petToUpdate.breed"></b-form-input>
+          <b-form-input id="breed" v-model="$store.state.selectedPet.breed" v-bind:placeholder="$store.state.selectedPet.breed"></b-form-input>
         </b-form-group>
 
         <b-form-group class = "pet-info" label="Age:" label-for="petAge">
-            <b-form-input id="petAge" v-model="petToUpdate.age" v-bind:placeholder="petToUpdate.age"></b-form-input>
+            <b-form-input id="petAge" v-model="$store.state.selectedPet.age" v-bind:placeholder="$store.state.selectedPet.age"></b-form-input>
         </b-form-group>
 
         <b-form-group class = "pet-info" label="Image:" label-for="petImg">
-            <b-form-input id="petImg" v-model="petToUpdate.picture" v-bind:placeholder="petToUpdate.picture"></b-form-input>
+            <b-form-input id="petImg" v-model="$store.state.selectedPet.picture" v-bind:placeholder="$store.state.selectedPet.picture"></b-form-input>
         </b-form-group>
 
         <b-form-group class = "pet-info" label="Arrival Date:" label-for="arrivalDate">
-          <b-form-datepicker id="arrivalDate" v-model="petToUpdate.arrivalDate" required v-bind:placeholder="petToUpdate.arrivalDate"></b-form-datepicker>
+          <b-form-datepicker id="arrivalDate" v-model="$store.state.selectedPet.arrivalDate" required v-bind:placeholder="$store.state.selectedPet.arrivalDate"></b-form-datepicker>
         </b-form-group>
 
         <b-form-group class = "pet-info" label="Adoption Date:" label-for="adoptionDate">
-          <b-form-datepicker id="adoptionDate" v-model="petToUpdate.adoptionDate" v-bind:placeholder="petToUpdate.adoptionDate"></b-form-datepicker>
+          <b-form-datepicker id="adoptionDate" v-model="$store.state.selectedPet.adoptionDate" v-bind:placeholder="$store.state.selectedPet.adoptionDate"></b-form-datepicker>
         </b-form-group>
 
         <b-form-group class = "pet-info" label="Adopted by:" label-for="adoptedBy" description="(Required)">
-          <b-form-input id="adoptedBy" v-model="petToUpdate.adoptedBy" placeholder="New owner's name here!"></b-form-input>
+          <b-form-input id="adoptedBy" v-model="$store.state.selectedPet.adoptedBy" placeholder="New owner's name here!"></b-form-input>
         </b-form-group>
 
         <b-form-group class = "pet-info" label="Adoption status:" label-for="isAdopted">
-          <b-form-input id="isAdopted" v-model="petToUpdate.isAdopted" placeholder="Time for a new home?"></b-form-input>
+          <b-form-select id="isAdopted" v-model="$store.state.selectedPet.isAdopted" placeholder="Time for a new home?">
+            <template #first>
+               <b-form-select-option :value="null" disabled>-- Please select an option --</b-form-select-option>
+            </template>
+            <b-form-select-option :value="true">Adopted</b-form-select-option>
+            <b-form-select-option :value="false">Not Adopted</b-form-select-option>
+          </b-form-select>
         </b-form-group>  
 
         <b-button type="submit" variant="dark border">Submit</b-button>
@@ -51,30 +57,23 @@
 </template>
 
 <script>
-import PetsService from '../services/PetsService'  
+import PetsService from '../services/PetsService';
+
 export default {
   data() {
     return {
-      petToUpdate: {
-        age : 0,
-        breed : '',
-        name : '',
-        picture : '',
-        isAdopted : 0,
-        arrivalDate : '',
-        adoptionDate : '',
-        adoptedBy : '',
-      },
-      placeholderpet: {},
+      updatePetSuccess : false,
+      resetPet : [{}],
     }
   },
   methods: {
     updatePet() {
       PetsService
-      .updatePet(this.petToUpdate)
+      .updatePet(this.$store.state.selectedPet)
       .then(response => {
-        if (response.status == 200) {
-          this.$store.commit("UPDATE_IND_PET", this.petToUpdate);
+        if (response.data == true) {
+          this.updatePetSuccess = true;
+          this.$store.commit("UPDATE_IND_PET", this.store.state.selectedPet);
         }
       })
       .catch((error) => {
@@ -84,6 +83,11 @@ export default {
           this.registrationErrorMsg = 'Bad Request: Validation Errors';
         }
       });
+    },
+    clearForm() {
+      this.$store.commit('SELECT_PET', this.resetPet);
+      this.updatePetSuccess = false;
+      this.$router.go(0);
     }
   }
 }

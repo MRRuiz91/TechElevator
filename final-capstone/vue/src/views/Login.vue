@@ -1,6 +1,8 @@
 <template>
-  <div id="login" class="text-center col-sm-4">
-  <b-card class="bg-dark text-white border">
+  <div id="login" class="text-center row">
+    <div class="col-sm-4">
+    </div>
+  <b-card class="bg-dark text-white border col-sm-4">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal text-white">Please Sign In</h1>
       <div
@@ -53,6 +55,8 @@
       </div>
     </form>
     </b-card>
+    <div class="col-sm-4">
+    </div>
   </div>
 </template>
 

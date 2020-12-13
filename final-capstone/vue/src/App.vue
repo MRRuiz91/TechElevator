@@ -21,4 +21,7 @@ export default {
   background-repeat: repeat;
   background-position: center;
 }
+a {
+  text-decoration: none !important;
+}
 </style>

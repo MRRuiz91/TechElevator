@@ -1,22 +1,18 @@
 <template>
-    <b-table class="bg-dark text-white" variant="text-white"
-        striped hover selectable :select-mode='single' 
+    <b-table
+        striped hover selectable :dark='true' b-table-select-single 
         :items="$store.state.allPets" :fields="fields" 
-        @row-selected="onRowSelected" responsive="sm"
+        @row-selected="onRowSelected" responsive="sm" selected-variant="success"
     >
-
-        <template #cell(updatePet)></template>
     </b-table>
 </template>
 
 <script>
-// import UpdatePetForm from '../components/UpdatePetForm.vue'
+
 import PetsService from '../services/PetsService'
 export default {
-    //components: { UpdatePetForm },
     data () {
         return {
-            modes: ['single'],
             fields: [ 
                 {
                     key: 'arrivalDate',
