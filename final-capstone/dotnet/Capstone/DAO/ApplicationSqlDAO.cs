@@ -60,6 +60,33 @@ namespace Capstone.DAO
             }
             return newAppId;
         }
+        public List<Application> GetPendingApplications()
+        {
+            List<Application> returnApps = new List<Application>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT application_id, username, email, phone_number, prompt_response, first_name, last_name, status " +
+                                                    "FROM applications WHERE status = 1", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Application pendingApp = GetApplicationFromReader(reader);
+                        returnApps.Add(pendingApp);
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+            return returnApps;
+        }
 
         public bool AddApplication(Application app)
         {
@@ -119,10 +146,10 @@ namespace Capstone.DAO
             return a;
         }
 
-        public ReturnUser ApproveVolunteerApplication(Application app)
+        public ReturnUser ApproveVolunteerApplication(MiniApp app)
         {
-            bool result = false;
-            int rowsAffected = 0;
+            //bool result = false;
+            //int rowsAffected = 0;
             ReturnUser returned = new ReturnUser();
             UserSqlDAO u = new UserSqlDAO(connectionString);
             try
@@ -136,12 +163,12 @@ namespace Capstone.DAO
                             "UPDATE applications SET status=2 WHERE application_id = @app_id", conn);
                     cmd.Parameters.AddWithValue("@app_id", app.ApplicationId);
 
-                    rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected == 1)
-                    {
-                        result = true;
+                    //rowsAffected = cmd.ExecuteNonQuery();
+                    //if (rowsAffected == 1)
+                    //{
+                    //    result = true;
 
-                    }
+                    //}
                 }
             }
             catch (SqlException)
@@ -154,6 +181,31 @@ namespace Capstone.DAO
             returned.Role = "user";
             returned.UserId = u.GetUserIdFromUsername(app.Username);
             return returned;
+        }
+        public bool RejectVolunteerApplication(MiniApp appToUpdate)
+        {
+            bool result = false;
+            int rowsAffected = 0;
+            ReturnUser returned = new ReturnUser();
+            try
+            {
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE applications SET status=3 WHERE application_id = @app_id", conn);
+                    cmd.Parameters.AddWithValue("@app_id", appToUpdate.ApplicationId);
+                    rowsAffected=cmd.ExecuteNonQuery();
+                    if (rowsAffected == 1)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+            return result;
         }
     }
 }

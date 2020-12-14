@@ -99,7 +99,7 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand("SELECT user_id FROM users WHERE username = @username", conn);
                     cmd.Parameters.AddWithValue("@username", username);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    //SqlDataReader reader = cmd.ExecuteReader();
 
                     userId = Convert.ToInt32(cmd.ExecuteScalar());
                 }

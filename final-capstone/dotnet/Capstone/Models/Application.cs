@@ -18,4 +18,10 @@ namespace Capstone.Models
 
 
     }
+    public class MiniApp
+    {
+        public int? ApplicationId { get; set; }
+        public int Status { get; set; }
+        public string Username { get; set; }
+    }
 }

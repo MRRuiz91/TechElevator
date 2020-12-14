@@ -18,6 +18,13 @@ namespace CapstoneTests.DAL
             Application app = dao.GetApplicationsByUsername("catluvr");
             Assert.AreEqual(dao.GetNewestApplicationId(), app.ApplicationId);
         }
+        [TestMethod]
+        public void GetPendingApplicationsTest()
+        {
+            ApplicationSqlDAO dao = new ApplicationSqlDAO(ConnectionString);
+            List<Application> pendingApps = dao.GetPendingApplications();
+            Assert.AreEqual(2, pendingApps.Count);
+        }
 
         [TestMethod]
         public void AddApplicationTests()
@@ -25,7 +32,7 @@ namespace CapstoneTests.DAL
             IApplicationDAO dao = new ApplicationSqlDAO(ConnectionString);
 
             Application app = new Application();
-            app.Username = "dogluvr";
+            app.Username = "dogluvr2";
             app.Phone = "555-555-5555";
             app.Email = "dogluvr@woof.com";
             app.PromptResponse = "I LOVE DOGS!!!1";
@@ -35,20 +42,33 @@ namespace CapstoneTests.DAL
             bool isSuccessful = dao.AddApplication(app);
             Assert.IsTrue(isSuccessful);
         }
-
         [TestMethod]
         public void ApproveVolunteerApplicationTest()
         {
             IApplicationDAO appDao = new ApplicationSqlDAO(ConnectionString);
             IUserDAO userDao = new UserSqlDAO(ConnectionString);
-
+            MiniApp mini = new MiniApp();
             Application app = appDao.GetApplicationsByUsername("catluvr");
-            ReturnUser updateSuccessful = appDao.ApproveVolunteerApplication(app);
+            mini.Username = app.Username;
+            mini.Status = 2;
+            mini.ApplicationId = app.ApplicationId;
+            ReturnUser updateSuccessful = appDao.ApproveVolunteerApplication(mini);
             User user = userDao.AddUser("catluvr", "password123", "user");
 
             Assert.IsNotNull(updateSuccessful);
             Assert.IsNotNull(user);
 
+        }
+        [TestMethod]
+        public void RejectVolunteerApplicationTest()
+        {
+            IApplicationDAO dao = new ApplicationSqlDAO(ConnectionString);
+            Application app = dao.GetApplicationsByUsername("brotato");
+            MiniApp mini = new MiniApp();
+            mini.Username = app.Username;
+            mini.Status = 3;
+            mini.ApplicationId = app.ApplicationId;
+            bool success = dao.RejectVolunteerApplication(mini);
         }
     }
 }

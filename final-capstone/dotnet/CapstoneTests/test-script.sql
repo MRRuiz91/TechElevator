@@ -6,8 +6,16 @@ INSERT INTO pets (breed, pet_age, pet_name, pet_image, is_adopted, arrival_date,
 INSERT INTO pets (breed, pet_age, pet_name, is_adopted, arrival_date) VALUES ('Gecko', 4, 'Rango', 1, '12-04-2010');
 INSERT INTO pets (breed, pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by) VALUES ('Cat', 12, 'Choncky', 'Image goes here', 0, '12/02/2010', 'Isabella', '01/01/2018');
 
-INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status)
+INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status) 
+VALUES ('brotato', 'bro@tater.com', '555-444-5555', 'i like potate', 'bruh', 'bro', 1);
+
+INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status) 
 VALUES ('catluvr', 'catluvr@gmail.com', '555-555-5555', 'I love cats', 'Crazy', 'CatLady', 1);
+
+
+
+
+
 
 
 

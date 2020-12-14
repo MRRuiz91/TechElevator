@@ -59,21 +59,5 @@ namespace Capstone.Controllers
             return Ok(result);
            
         }
-
-        [HttpPut("pets/app")]
-
-        public ActionResult<ReturnUser> UpdateApplicationStatus(Application appToUpdate)
-        {
-            Application existing = AppDao.GetApplicationsByUsername(appToUpdate.Username);
-            if (existing == null)
-            {
-                return NotFound("Application Not Found");
-            }
-
-            ReturnUser returnUser = AppDao.ApproveVolunteerApplication(appToUpdate);
-            return returnUser;
-
-
-        }
     }
 }

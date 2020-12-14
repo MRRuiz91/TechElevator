@@ -11,6 +11,8 @@ namespace Capstone.DAO
         Application GetApplicationsByUsername(string username);
         bool AddApplication(Application app);
         int GetNewestApplicationId();
-        ReturnUser ApproveVolunteerApplication(Application app);
+        ReturnUser ApproveVolunteerApplication(MiniApp app);
+        bool RejectVolunteerApplication(MiniApp appToUpdate);
+        List<Application> GetPendingApplications();
     }
 }
