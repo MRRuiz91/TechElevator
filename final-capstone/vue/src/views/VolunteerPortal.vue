@@ -9,12 +9,12 @@
 
         <div class="col-sm tabs"> 
             <b-card class="bg-dark border text-white">
-                <b-tabs justified class="bg-dark border text-white">
-                    <b-tab title="Pet Roster" active >
-                        <pet-roster />
-                    </b-tab>
+                <b-tabs justified class="bg-dark border text-white" card>
                     <b-tab title="New Pet" lazy>
                         <add-pet-form />
+                    </b-tab>
+                    <b-tab title="Pet Roster" active >
+                        <pet-roster />
                     </b-tab>
                     <b-tab title="Update Pet" lazy v-bind:disabled=petSelected>
                         <update-pet-form />
@@ -27,7 +27,7 @@
 
         <div class="volunteerDirectory col-sm">
             <b-card class="bg-dark border text-white">
-                <b-tabs justified class="bg-dark border text-white">
+                <b-tabs justified class="bg-dark border text-white" card>
                     <b-tab title="Volunteer Directory" active >
                         <volunteer-directory />
                     </b-tab>
