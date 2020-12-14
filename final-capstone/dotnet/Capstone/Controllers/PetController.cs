@@ -12,10 +12,11 @@ namespace Capstone.Controllers
     public class PetController : ControllerBase
     {
         private readonly IPetDAO PetDao;
-
-        public PetController(IPetDAO _petDao)
+        private readonly IApplicationDAO AppDao;
+        public PetController(IPetDAO _petDao, IApplicationDAO _appDao)
         {
             PetDao = _petDao;
+            AppDao = _appDao;
         }
 
         [HttpGet("pets")]
@@ -57,6 +58,22 @@ namespace Capstone.Controllers
             bool result = PetDao.UpdatePetListing(petToUpdate);
             return Ok(result);
            
+        }
+
+        [HttpPut("pets/app")]
+
+        public ActionResult<ReturnUser> UpdateApplicationStatus(Application appToUpdate)
+        {
+            Application existing = AppDao.GetApplicationsByUsername(appToUpdate.Username);
+            if (existing == null)
+            {
+                return NotFound("Application Not Found");
+            }
+
+            ReturnUser returnUser = AppDao.ApproveVolunteerApplication(appToUpdate);
+            return returnUser;
+
+
         }
     }
 }
