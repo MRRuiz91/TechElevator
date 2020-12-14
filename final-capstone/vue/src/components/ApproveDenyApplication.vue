@@ -1,27 +1,24 @@
 <template>
     <div>
-         <b-button size="sm" class="mr-1">
-            Approve
-        </b-button>
-        <b-button size="sm" class="mr-1">
-            Deny
-        </b-button>
-   <b-table
-        striped hover selectable :dark='true' b-table-select-single 
-        :items="$store.state.pendingApplications" :fields="fields" sticky-header
-        @row-selected="onRowSelected" responsive="sm" selected-variant="success"
-    >
-    <template #cell(Approve)>
-        <b-button size="sm" class="mr-1">
-            Approve
-        </b-button>
-    </template>
-    <template #cell(Deny)>
-        <b-button size="sm" class="mr-1">
-            Deny
-        </b-button>
-    </template>
-    </b-table>
+        <div class="text-center">
+            <b-button size="m" class="mr-5 mb-3" variant="outline-success" >
+                Approve
+            </b-button>
+            <b-button size="m" class="ml-5 mb-3" variant="outline-warning">
+                Deny
+            </b-button>
+        </div>
+        <b-table
+            striped hover selectable 
+            :dark='true' 
+            b-table-select-single 
+            :items="$store.state.pendingApplications" 
+            :fields="fields" sticky-header="500"
+            @row-selected="onRowSelected" 
+            responsive="sm" 
+            selected-variant="success"
+        >
+        </b-table>
     </div>
 </template>
 
@@ -29,8 +26,8 @@
 export default {
     data () {
         return {
-            fields : [ 'Name', 'Response', 'Email', 'Phone Number', 'Approve', 'Deny'],
-            SelectedApplication : {
+            fields : [ 'Name', 'Response', 'Email', 'Phone Number'],
+            selectedApplication : {
                 id: 0,
                 username: '',
                 status: 0,
