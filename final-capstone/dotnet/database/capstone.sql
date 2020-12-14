@@ -107,6 +107,8 @@ VALUES (2, 'George', 'https://live.staticflickr.com/65535/50692851887_e9a7a1586e
 INSERT INTO pets (pet_age, pet_name, is_adopted, arrival_date)
 VALUES (3, 'Arlo', 0, 01/01/2020);
 
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
+VALUES (8, 'Penny', 'https://live.staticflickr.com/65535/50719402142_91386217c6_c.jpg', 0, 12/07/2012);
 --INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 --VALUES (, '', '', 0, 12/08/2020);
 GO
