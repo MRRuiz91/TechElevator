@@ -4,7 +4,9 @@
       Thank you for applying, an administrator will review your application and notify you of your status.
     </div>
 
-    <center><h1>Little Buddies looking for a 'Fur'ever Home</h1></center>
+    <center>
+      <div><img class="img" src ="..\assets\MarvelousZoo.png" height="200rem"/></div>
+      <h1>Little Buddies looking for a 'Fur'ever Home</h1></center>
     <pet-list/>
   </div>
 </template>

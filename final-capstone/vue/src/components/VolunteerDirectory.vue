@@ -13,6 +13,9 @@ export default {
         return {
             fields : [ 'User Id', 'Username', 'Role', 'Email', 'Phone Number']
         }
+    },
+    created() {
+        
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="text-white" toggleable="med" variant="dark" type="dark border">
+  <b-navbar class="text-white mt-auto" toggleable="med" variant="dark" type="dark border">
         <b-nav-text>Thank you for all of your hard work!</b-nav-text>
        
        <b-navbar-nav>

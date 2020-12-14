@@ -55,7 +55,7 @@ export default {
       .apply(this.application)
       .then((response) => {
         if (response.status == 201) {
-          this.$router.push({path: '/home', query: { registration: 'success' },
+          this.$router.push({path: '/', query: { registration: 'success' },
           });
         }
       })

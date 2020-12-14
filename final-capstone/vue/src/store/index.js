@@ -59,6 +59,9 @@ export default new Vuex.Store({
     },
     SELECT_PET(state, selected) {
       state.selectedPet = selected[0];
+    },
+    UPDATE_PENDING_APPLICATIONS(state, appList) {
+      state.pendingApplications = appList;
     }
   }
 })

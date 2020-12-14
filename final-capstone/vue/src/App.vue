@@ -1,8 +1,8 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <navbar />
-    <router-view />
-    <the-footer />
+    <router-view/>
+    <the-footer/>
   </div>
 </template>
 
@@ -29,4 +29,26 @@ body {
 a {
   text-decoration: none !important;
 }
+/*.container {
+  display: grid;
+  grid-template-areas: 
+  "nav nav nav" 
+  "body body body"
+  "footer footer footer";
+  width: 100vw;
+}
+.footer {
+  grid-area:footer;
+  height: 10vh;
+  
+}
+.body {
+  grid-area: body;
+  height: 80vh;
+}
+.nav {
+  grid-area: nav;
+  height: 10vh;
+  width: 90vw;
+}*/
 </style>

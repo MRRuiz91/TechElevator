@@ -23,11 +23,13 @@
 </template>
 
 <script>
+import VolunteerService from '../services/VolunteerService'
 export default {
     data () {
         return {
-            fields : [ 'Name', 'Response', 'Email', 'Phone Number'],
-            selectedApplication : {
+            fields : [ 'applicationId', 'firstName', 'lastName', 'Response', 'email', 'phone', 'status'],
+            selectedApplications : [],
+            appToUpdate : {
                 id: 0,
                 username: '',
                 status: 0,
@@ -37,12 +39,18 @@ export default {
     },
     methods: {
         /*updateStatus() {
-            this.VolunteerService.ApproveOrDenyApplication(this.SelectedApplication).then(response => {}).catch(error => {});
+            this.VolunteerService.ApproveOrDenyApplication(this.appToUpdate).then(response => {}).catch(error => {});
         },*/
-        onRowSelect(items) {
-            this.SelectedApplication = items; 
+        onRowSelect(item) {
+            this.SelectedApplications = item; 
         }
     },
+    created() {
+        VolunteerService.getPendingApplications().then(response => {
+            this.$store.commit('UPDATE_PENDING_APPLICATIONS', response.data)
+        });
+        
+    }
 }
 </script>
 
