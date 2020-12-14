@@ -16,7 +16,7 @@
         <img src="..\assets\pawPrint.png" class="img" height="20 px"/>Volunteer Portal</b-link>
           
         <b-link class = "text-white text-decoration-none" to="register" v-else>
-        <img src="..\assets\pawPrint.png" class="img" height="20 px"/>Register</b-link>
+        <img src="..\assets\pawPrint.png" class="img" height="20 px"/>Sign up to Volunteer</b-link>
       </div>
   </b-navbar>
 </template>

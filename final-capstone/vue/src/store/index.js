@@ -24,6 +24,8 @@ export default new Vuex.Store({
     selectedPet : null,
     showAddPetForm: false,
     showUpdatePetForm: false,
+    volunteers: [],
+    pendingApplications: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
