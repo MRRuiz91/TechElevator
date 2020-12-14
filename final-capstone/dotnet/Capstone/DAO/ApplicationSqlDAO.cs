@@ -118,5 +118,42 @@ namespace Capstone.DAO
 
             return a;
         }
+
+        public ReturnUser ApproveVolunteerApplication(Application app)
+        {
+            bool result = false;
+            int rowsAffected = 0;
+            ReturnUser returned = new ReturnUser();
+            UserSqlDAO u = new UserSqlDAO(connectionString);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd =
+                        new SqlCommand(
+                            "UPDATE applications SET status=2 WHERE application_id = @app_id", conn);
+                    cmd.Parameters.AddWithValue("@app_id", app.ApplicationId);
+
+                    rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected == 1)
+                    {
+                        result = true;
+
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            u.AddUser(app.Username, "password123", "user");
+            returned.Username = app.Username;
+            returned.Role = "user";
+            returned.UserId = u.GetUserIdFromUsername(app.Username);
+            return returned;
+        }
     }
 }

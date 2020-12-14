@@ -88,6 +88,28 @@ namespace Capstone.DAO
 
             return u;
         }
+        public int GetUserIdFromUsername(string username)
+        {
+            int userId = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
 
+                    SqlCommand cmd = new SqlCommand("SELECT user_id FROM users WHERE username = @username", conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    userId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return userId;
+        }
     }
 }

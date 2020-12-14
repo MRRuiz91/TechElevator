@@ -35,5 +35,20 @@ namespace CapstoneTests.DAL
             bool isSuccessful = dao.AddApplication(app);
             Assert.IsTrue(isSuccessful);
         }
+
+        [TestMethod]
+        public void ApproveVolunteerApplicationTest()
+        {
+            IApplicationDAO appDao = new ApplicationSqlDAO(ConnectionString);
+            IUserDAO userDao = new UserSqlDAO(ConnectionString);
+
+            Application app = appDao.GetApplicationsByUsername("catluvr");
+            ReturnUser updateSuccessful = appDao.ApproveVolunteerApplication(app);
+            User user = userDao.AddUser("catluvr", "password123", "user");
+
+            Assert.IsNotNull(updateSuccessful);
+            Assert.IsNotNull(user);
+
+        }
     }
 }
