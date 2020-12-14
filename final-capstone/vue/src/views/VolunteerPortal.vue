@@ -9,7 +9,7 @@
 
         <div class="col-sm tabs"> 
             <b-card class="bg-dark border text-white">
-                <b-tabs justified class="bg-dark border text-white">
+                <b-tabs justified class="bg-dark border text-white" card>
                     <b-tab title="Pet Roster" active >
                         <pet-roster />
                     </b-tab>
@@ -27,7 +27,7 @@
 
         <div class="volunteerDirectory col-sm">
             <b-card class="bg-dark border text-white">
-                <b-tabs justified class="bg-dark border text-white">
+                <b-tabs justified class="bg-dark border text-white" card>
                     <b-tab title="Volunteer Directory" active >
                         <volunteer-directory />
                     </b-tab>

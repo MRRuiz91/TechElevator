@@ -1,6 +1,6 @@
 <template>
     <b-table
-        striped hover selectable :dark='true' b-table-select-single 
+        striped hover selectable :dark='true' b-table-select-single sticky-header
         :items="$store.state.allPets" :fields="fields" 
         @row-selected="onRowSelected" responsive="sm" selected-variant="success"
     >

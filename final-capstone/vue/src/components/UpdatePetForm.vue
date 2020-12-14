@@ -71,10 +71,10 @@ export default {
       PetsService
       .updatePet(this.$store.state.selectedPet)
       .then(response => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           this.updatePetSuccess = true;
           this.$store.commit("UPDATE_IND_PET", this.store.state.selectedPet);
-          this.clearForm;
+          this.clearForm();
         }
       })
       .catch((error) => {
