@@ -26,11 +26,15 @@
         <div class="col-sm-0.5"></div>
 
         <div class="volunteerDirectory col-sm">
-            <b-card >
-                <h1>volunteer Directory</h1>
-                <div class="adminView" v-if="$store.state.user.role === 'admin'">
-                    <h1>admin see dis</h1>
-                </div>
+            <b-card class="bg-dark border text-white">
+                <b-tabs justified class="bg-dark border text-white">
+                    <b-tab title="Volunteer Directory" active >
+                        <volunteer-directory />
+                    </b-tab>
+                    <b-tab v-if="$store.state.user.role === 'admin'" title="Review Pending Applications" lazy>
+                        <approve-deny-application />
+                    </b-tab>
+                </b-tabs>
             </b-card>
         </div>
 
@@ -41,12 +45,15 @@
 
 <script>
 import AddPetForm from '../components/AddPetForm.vue';
+import ApproveDenyApplication from '../components/ApproveDenyApplication.vue';
 import UpdatePetForm from '../components/UpdatePetForm.vue';
+import VolunteerDirectory from '../components/VolunteerDirectory.vue';
 import PetRoster from '../views/PetRoster.vue';
 export default {
-    components: { AddPetForm, PetRoster, UpdatePetForm },
+    components: { AddPetForm, PetRoster, UpdatePetForm, ApproveDenyApplication, VolunteerDirectory},
     data() {
         return {
+             
         }
     },
     computed: {

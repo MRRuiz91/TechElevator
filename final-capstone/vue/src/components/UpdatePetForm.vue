@@ -71,15 +71,16 @@ export default {
       PetsService
       .updatePet(this.$store.state.selectedPet)
       .then(response => {
-        if (response.data == true) {
+        if (response.status == 200) {
           this.updatePetSuccess = true;
           this.$store.commit("UPDATE_IND_PET", this.store.state.selectedPet);
+          this.clearForm;
         }
       })
       .catch((error) => {
         const response = error.response;
         this.registrationErrors = true;    
-        if (response.status === 400) {
+        if (response.status === 401) {
           this.registrationErrorMsg = 'Bad Request: Validation Errors';
         }
       });
