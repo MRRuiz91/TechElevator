@@ -3,7 +3,7 @@
     <div class="col-sm">
 
       <div class="text-center">
-        <h1>Update Pet Form</h1>
+        <h3>Update Pet Form</h3>
         <p>Need to change some things?</p>
       </div>
 
@@ -11,7 +11,7 @@
       <div class="alert alert-success" role="alert" v-if="updatePetSuccess">Pet Successfully Updated!</div> 
 
       <b-form class="update-pet-form" @submit.prevent="updatePet">
-        <b-form-group inline class = "pet-info" label="Name:" label-for="petName" description="(Required)">
+        <b-form-group inline class = "pet-info" label="Name:" label-for="petName">
           <b-form-input id="petName" v-model="$store.state.selectedPet.name" required v-bind:placeholder="$store.state.selectedPet.name"></b-form-input>
         </b-form-group>
 

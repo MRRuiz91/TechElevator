@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg text-white">
+  <div class="home text-white">
     <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
       Thank you for applying, an administrator will review your application and notify you of your status.
     </div>
@@ -17,8 +17,5 @@ export default {
 };
 </script>
 
-<style scoped>
-.bg {
-    background-repeat: repeat-y;
-}
+<style>
 </style>

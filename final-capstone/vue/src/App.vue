@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg">
+  <div id="app" >
     <navbar />
     <router-view />
     <the-footer />
@@ -15,11 +15,11 @@ export default {
 </script>
 
 <style>
-.bg {  
+body {  
   background-image: url("https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-panther-fur-texture-900x900.jpg") !important;
   background-color: black;
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
   background-size: auto;
   background-repeat: repeat;
   background-position: center;
