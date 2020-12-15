@@ -8,6 +8,6 @@ export default {
         return axios.put('/applications', application)
     },
     getVolunteerList() {
-        return axios.get('')  
+        return axios.get('/users')  
     },
 }

@@ -2,10 +2,10 @@
     <div>
         <div class="text-center">
             <div>
-                <b-alert v-if="aproveSuccess"></b-alert>
+                <b-alert v-if="approveSuccess"><p>Success</p></b-alert>
                 <b-alert v-if="denySuccess"></b-alert>
             </div>
-            <b-button @click="aproveApp" size="m" class="mr-5 mb-3" variant="outline-success" >
+            <b-button @click="approveApp" size="m" class="mr-5 mb-3" variant="outline-success" >
                 Approve
             </b-button>
             <b-button @click="denyApp" size="m" class="ml-5 mb-3" variant="outline-warning">
@@ -15,10 +15,10 @@
         <b-table
             striped hover selectable 
             :dark='true' 
-            :items="$store.state.pendingApplications" 
+            :items="pendingApplications" 
             :fields="fields" sticky-header="500"
             ref="appTable"
-            @row-selected="onRowSelected()" 
+            @row-selected="onRowSelect" 
             responsive="sm" 
             :select-mode="selectMode"
             selected-variant="success">
@@ -32,20 +32,21 @@ export default {
     data () {
         return {
             fields : [ 'applicationId', 'firstName', 'lastName', 'Response', 'email', 'phone', 'status'],
-            selectedApplications : [],
+            pendingApplications : [],
             appToUpdate : {
                 id: 0,
                 username: '',
                 status: 0,
             },
-            aproveSuccess: false,
+            approveSuccess: false,
             denySuccess: false,
-            selectMode: 'single'
+            selectMode: 'single',
+            selected: []
         }
     },
     methods: {
         updateStatus() {
-            this.VolunteerService.ApproveOrDenyApplication(this.selectedApplications[0]).then(response => {
+            VolunteerService.ApproveOrDenyApplication(this.appToUpdate).then(response => {
                 if(response.status === 200){
                     this.aproveSuccess = true;
                 }
@@ -53,10 +54,14 @@ export default {
             }).catch(error => {});
         },
         onRowSelect(item) {
-            this.$store.commit("SELECT_APPLICATIONS", item);
+            this.selected = item;
+            this.appToUpdate.id = this.selected[0].id;
+            this.appToUpdate.username = this.selected[0].username;
+            this.appToUpdate.status = this.selected[0].status;
         },
-        aproveApp(){
-            this.selectedApplications[0].status = 2;
+        approveApp(){
+            const approveStatus = 2;
+            this.appToUpdate.status = approveStatus;
             this.updateStatus();
             this.selectedApplications = [];
             this.refreshAppList();
@@ -76,7 +81,7 @@ export default {
     },
     created() {
         VolunteerService.getPendingApplications().then(response => {
-            this.$store.commit('UPDATE_PENDING_APPLICATIONS', response.data)
+            this.pendingApplications = response.data;
         });
         
     }
