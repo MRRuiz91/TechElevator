@@ -75,9 +75,9 @@ ADD FOREIGN KEY(pet_type) REFERENCES breed(breed_id)
 
 
 --populate default data
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role, is_first_login) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 0);
 
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+INSERT INTO users (username, password_hash, salt, user_role, is_first_login) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 0);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date,adoption_date, adopted_by)
 VALUES (3, 'Roger', 'https://live.staticflickr.com/65535/50692703601_19cbf11613_c.jpg', 1, 07/08/2019, 12/08/2020, 'Jason Picardi');

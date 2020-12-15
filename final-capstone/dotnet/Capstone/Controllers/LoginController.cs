@@ -2,6 +2,7 @@
 using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
+using System.Collections.Generic;
 
 namespace Capstone.Controllers
 {
@@ -46,30 +47,6 @@ namespace Capstone.Controllers
 
             return result;
         }
-
-        /*[HttpPost("/register")]
-        public IActionResult Register(RegisterUser userParam)
-        {
-            IActionResult result;
-
-            User existingUser = userDAO.GetUser(userParam.Username);
-            if (existingUser != null)
-            {
-                return Conflict(new { message = "Username already taken. Please choose a different username." });
-            }
-
-            User user = userDAO.AddUser(userParam.Username, userParam.Password, userParam.Role);
-            if (user != null)
-            {
-                result = Created(user.Username, null); //values aren't read on client
-            }
-            else
-            {
-                result = BadRequest(new { message = "An error occurred and user was not created." });
-            }
-
-            return result;
-        }*/
         [HttpPost("/apply")]
         public IActionResult Apply(Application app)
         {
@@ -108,6 +85,19 @@ namespace Capstone.Controllers
                 return BadRequest(new { message = "An error occurred and user was not updated." });
             }
 
+        }
+        [HttpGet("/users")]
+        public IActionResult GetAllUsers()
+        {
+            List<User> allUsers = userDAO.GetAllUsers();
+            if (allUsers == null)
+            {
+                return BadRequest(new { message = "An error occurred." });
+            }
+            else
+            {
+                return Ok(allUsers);
+            }
         }
     }
 }

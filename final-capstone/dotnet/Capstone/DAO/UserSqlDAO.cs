@@ -91,11 +91,11 @@ namespace Capstone.DAO
                 PasswordHash = Convert.ToString(reader["password_hash"]),
                 Salt = Convert.ToString(reader["salt"]),
                 Role = Convert.ToString(reader["user_role"]),
-                FirstName = Convert.ToString(reader["first_name"]),
-                LastName = Convert.ToString(reader["last_name"]),
-                Email = Convert.ToString(reader["email"]),
-                Phone = Convert.ToString(reader["phone_number"]),
-                IsFirstLogin = Convert.ToBoolean(reader["is_first_login"])
+                FirstName = reader.IsDBNull(5) ? "" : Convert.ToString(reader["first_name"]),
+                LastName = reader.IsDBNull(6) ? "" : Convert.ToString(reader["last_name"]),
+                Email = reader.IsDBNull(7) ? "" : Convert.ToString(reader["email"]),
+                Phone = reader.IsDBNull(8) ? "" : Convert.ToString(reader["phone_number"]),
+                IsFirstLogin = reader.IsDBNull(9) ? false : Convert.ToBoolean(reader["is_first_login"])
             };
 
             return u;
@@ -135,6 +135,7 @@ namespace Capstone.DAO
 
                     SqlCommand cmd = new SqlCommand("UPDATE users SET is_first_login = 0 WHERE user_id = @user_id", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
+                    int rowsAffected = cmd.ExecuteNonQuery();
                     success = true;
                 }
             }
@@ -164,6 +165,31 @@ namespace Capstone.DAO
             }
             return newUserId;
 
+        }
+
+        public List<User> GetAllUsers()
+        {
+            List<User> allUsers = new List<User>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT user_id, username, password_hash, salt, user_role, first_name, last_name, email, phone_number, is_first_login FROM users", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        User user = GetUserFromReader(reader);
+                        allUsers.Add(user);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return allUsers;
         }
     }
 }

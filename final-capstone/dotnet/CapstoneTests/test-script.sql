@@ -16,6 +16,9 @@ VALUES ('catluvr', 'catluvr@gmail.com', '555-555-5555', 'I love cats', 'Crazy', 
 INSERT INTO users (username, password_hash, salt, user_role, first_name, last_name, email, phone_number, is_first_login)
 VALUES ('mark', '234', '24', 'user', 'markie', 'markoo', 'email@gmail.com', '555-555-5555', 1)
 
+INSERT INTO users (username, password_hash, salt, user_role, first_name, last_name, email, phone_number, is_first_login)
+VALUES ('brotato', 'weifuhil', '2r897y3ef', 'admin', 'bruh', 'bro', 'bro@tater.com', '555-444-5555', 0)
+
 
 
 

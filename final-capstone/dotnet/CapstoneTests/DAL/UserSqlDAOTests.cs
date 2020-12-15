@@ -28,6 +28,13 @@ namespace CapstoneTests.DAL
             Assert.IsTrue(u);
 
         }
+        [TestMethod]
+        public void GetAllUsersTest()
+        {
+            IUserDAO dao = new UserSqlDAO(ConnectionString);
+            List<User> allUsers = dao.GetAllUsers();
+            Assert.AreEqual(2, allUsers.Count);
+        }
     }
 
 
