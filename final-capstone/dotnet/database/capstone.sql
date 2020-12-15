@@ -83,38 +83,37 @@ INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date,adoptio
 VALUES (3, 'Roger', 'https://live.staticflickr.com/65535/50692703601_19cbf11613_c.jpg', 1, 07/08/2019, 12/08/2020, 'Jason Picardi');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (2, 'Fred', 'https://live.staticflickr.com/65535/50691972548_bc527a54b0_c.jpg
-', 0, 02/07/2019);
+VALUES (2, 'Fred', 'https://live.staticflickr.com/65535/50691972548_e85879479d_w.jpg', 0, 02/07/2019);
 
 INSERT INTO pets (pet_name, pet_image, is_adopted, arrival_date)
-VALUES ('Hank and Dale', 'https://live.staticflickr.com/65535/50692717801_554dfb5aa3_c.jpg', 0, 06/02/2019);
+VALUES ('Hank and Dale', 'https://live.staticflickr.com/65535/50692717801_23d8ec2099_w.jpg', 0, 06/02/2019);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (8, 'Grace', 'https://live.staticflickr.com/65535/50692781287_74ab776e1b_c.jpg', 0, 06/08/2019);
+VALUES (8, 'Grace', 'https://live.staticflickr.com/65535/50692781287_9ea237ec1f_w.jpg', 0, 06/08/2019);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (3, 'Frida', 'https://live.staticflickr.com/65535/50692703616_d59ec26f99_c.jpg', 0, 12/08/2019);
+VALUES (3, 'Frida', 'https://live.staticflickr.com/65535/50692703616_3370d7881a_c.jpg', 0, 12/08/2019);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (3, 'Juniper', 'https://live.staticflickr.com/65535/50692781192_1b59149184_c.jpg', 0, 09/09/2019);
+VALUES (3, 'Juniper', 'https://live.staticflickr.com/65535/50692781192_af5aeb2a35_c.jpg', 0, 09/09/2019);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES (6, 'Willow', 'https://live.staticflickr.com/65535/50695131592_2c99144b3e_c.jpg', 0, 10/10/2019);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (2, 'Simone', 'https://live.staticflickr.com/65535/50694304838_ca9d408eb1_c.jpg', 0, 10/20/2019);
+VALUES (2, 'Simone', 'https://live.staticflickr.com/65535/50694304838_7922a255e5_c.jpg', 0, 10/20/2019);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (5, 'Bear', 'https://live.staticflickr.com/65535/50694304848_d1924368fa_c.jpg', 0, 10/20/2019);
+VALUES (5, 'Bear', 'https://live.staticflickr.com/65535/50694304848_0efe8c04f1_c.jpg', 0, 10/20/2019);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (2, 'George', 'https://live.staticflickr.com/65535/50692851887_e9a7a1586e_c.jpg', 0, 12/08/2020);
-
-INSERT INTO pets (pet_age, pet_name, is_adopted, arrival_date)
-VALUES (3, 'Arlo', 0, 01/01/2020);
+VALUES (2, 'George', 'https://live.staticflickr.com/65535/50692851887_c99e4f9db2_w.jpg', 0, 12/08/2020);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES (8, 'Penny', 'https://live.staticflickr.com/65535/50719402142_91386217c6_c.jpg', 0, 12/07/2012);
+VALUES (3, 'Arlo', 'https://live.staticflickr.com/65535/50694818113_b17f16a73c_w.jpg', 0, 01/01/2020);
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
+VALUES (8, 'Penny', 'https://live.staticflickr.com/65535/50719402142_649a4cb625_c.jpg', 0, 12/07/2012);
 --INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 --VALUES (, '', '', 0, 12/08/2020);
 GO
