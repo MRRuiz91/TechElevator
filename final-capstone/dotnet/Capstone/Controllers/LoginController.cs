@@ -93,5 +93,21 @@ namespace Capstone.Controllers
 
             return result;
         }
+
+        [HttpPut("/users")]
+        public IActionResult UpdateLoginStatus(User user)
+        {
+            
+            bool success = userDAO.UpdateUserLoginStatus(user.UserId);
+            if (success)
+            {
+                return Ok(success);
+            }
+            else
+            {
+                return BadRequest(new { message = "An error occurred and user was not updated." });
+            }
+
+        }
     }
 }

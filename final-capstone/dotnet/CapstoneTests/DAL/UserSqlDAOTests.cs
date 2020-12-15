@@ -11,7 +11,6 @@ namespace CapstoneTests.DAL
     public class UserSqlDAOTests: AnimalDAOTests
     {
         [TestMethod]
-
         public void GetUserByUsernameTest()
         {
             IUserDAO dao = new UserSqlDAO(ConnectionString);
@@ -19,5 +18,17 @@ namespace CapstoneTests.DAL
             Assert.IsNotNull(u);
 
         }
+
+        [TestMethod]
+        public void UpdateUserLoginStatusTest()
+        {
+            IUserDAO dao = new UserSqlDAO(ConnectionString);
+            
+            bool u = dao.UpdateUserLoginStatus(dao.GetNewestUserId());
+            Assert.IsTrue(u);
+
+        }
     }
+
+
 }

@@ -124,28 +124,46 @@ namespace Capstone.DAO
             return userId;
         }
 
-        //public bool UpdateUserLoginStatus(int userId)
-        //{
-        //    bool success = false;
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(connectionString))
-        //        {
-        //            conn.Open();
+        public bool UpdateUserLoginStatus(int userId)
+        {
+            bool success = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
 
-        //            SqlCommand cmd = new SqlCommand("UPDATE users SET is_first_login = 0 WHERE username = @username", conn);
-        //            cmd.Parameters.AddWithValue("@username", username);
-        //            //SqlDataReader reader = cmd.ExecuteReader();
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET is_first_login = 0 WHERE user_id = @user_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    success = true;
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return success;
 
-        //            userId = Convert.ToInt32(cmd.ExecuteScalar());
-        //        }
-        //    }
-        //    catch (SqlException)
-        //    {
-        //        throw;
-        //    }
+        }
 
+        public int GetNewestUserId()
+        {
+            int newUserId = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT MAX(user_id) from users", conn);
+                    newUserId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+            return newUserId;
 
-        //}
+        }
     }
 }
