@@ -1,6 +1,6 @@
 <template>
     <div class= "pet-container">
-        <pet-card class= "card bg-dark" v-bind:pet="pet"  v-for="pet in $store.state.availablePets" v-bind:key="pet.petId"/>
+        <pet-card class= "card bg-dark mx-2" v-bind:pet="pet"  v-for="pet in $store.state.availablePets" v-bind:key="pet.petId"/>
     </div>
 </template>
 

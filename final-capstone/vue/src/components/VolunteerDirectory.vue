@@ -1,21 +1,25 @@
 <template>
     <b-table
-        striped hover selectable :dark='true' b-table-select-single 
-        :items="$store.state.volunteers" :fields="fields" 
-        @row-selected="onRowSelected" responsive="sm" selected-variant="success"
+        striped hover :dark='true' 
+        :items="volunteerList" :fields="fields" 
+         responsive="sm" selected-variant="success"
     >
     </b-table>
 </template>
 
 <script>
+import VolunteerService from '../services/VolunteerService'
 export default {
     data() {
         return {
-            fields : [ 'User Id', 'Username', 'Role', 'Email', 'Phone Number']
+            fields : [ 'userId', 'firstName', 'lastName', 'username', 'role', 'email', 'phone'],
+            volunteerList : []
         }
     },
     created() {
-        
+        VolunteerService.getVolunteerList().then(response => {
+            this.volunteerList = response.data;
+        })
     }
 }
 </script>

@@ -6,7 +6,9 @@
 
     <center>
       <div><img class="img" src ="..\assets\MarvelousZoo.png" height="200rem"/></div>
-      <h1>Little Buddies looking for a 'Fur'ever Home</h1></center>
+      <h1>Little Buddies looking for a 'Fur'ever Home</h1>
+    </center>
+    
     <pet-list/>
   </div>
 </template>

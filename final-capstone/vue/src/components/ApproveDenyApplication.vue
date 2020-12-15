@@ -2,14 +2,26 @@
     <div>
         <div class="text-center">
             <div>
-                <b-alert v-if="approveSuccess"><p>Success</p></b-alert>
-                <b-alert v-if="denySuccess"></b-alert>
+                <b-alert :show="approveSuccess == true" variant="success">Success</b-alert>
+                <b-alert :show="dismissCountDown"
+                dismissible
+                variant="warning"
+                @dismissed="dismissCountDown=0"
+                @dismiss-count-down="countDownChanged">
+                    <p>{{appToUpdate.username}} Successfully Rejected</p>
+                    <b-progress
+                        variant="warning"
+                        :max="dismissSecs"
+                        :value="dismissCountDown"
+                        height="4px"
+                    ></b-progress>
+                </b-alert>
             </div>
             <b-button @click="approveApp" size="m" class="mr-5 mb-3" variant="outline-success" >
-                Approve
+                Approve Application
             </b-button>
             <b-button @click="denyApp" size="m" class="ml-5 mb-3" variant="outline-warning">
-                Deny
+                Reject Application
             </b-button>
         </div>
         <b-table
@@ -34,28 +46,30 @@ export default {
             fields : [ 'applicationId', 'firstName', 'lastName', 'Response', 'email', 'phone', 'status'],
             pendingApplications : [],
             appToUpdate : {
-                id: 0,
+                applicationId: 0,
                 username: '',
                 status: 0,
             },
             approveSuccess: false,
             denySuccess: false,
             selectMode: 'single',
-            selected: []
+            selected: [],
+            dismissSecs: 3,
+            dismissCountDown: 0,
         }
     },
     methods: {
         updateStatus() {
             VolunteerService.ApproveOrDenyApplication(this.appToUpdate).then(response => {
-                if(response.status === 200){
-                    this.aproveSuccess = true;
+                if(response.status == 200){
+                    this.approveSuccess = true;
                 }
-                else{this.denySuccess = true;}
-            }).catch(error => {});
+                else{this.showAlert();}
+            })/*.catch(error => {});*/
         },
         onRowSelect(item) {
             this.selected = item;
-            this.appToUpdate.id = this.selected[0].id;
+            this.appToUpdate.applicationId = this.selected[0].applicationId;
             this.appToUpdate.username = this.selected[0].username;
             this.appToUpdate.status = this.selected[0].status;
         },
@@ -63,17 +77,26 @@ export default {
             const approveStatus = 2;
             this.appToUpdate.status = approveStatus;
             this.updateStatus();
-            this.selectedApplications = [];
-            this.refreshAppList();
+            this.pendingApplications = this.pendingApplications.filter(app => {
+                return app.applicationId != this.appToUpdate.applicationId;
+            });
+            this.selected = [];
+            //this.refreshAppList();
         },
         denyApp(){
-            this.selectedApplications[0].status = 3;
+            const denyStatus = 3;
+            this.appToUpdate.status = denyStatus;
             this.updateStatus();
-        },
-        refreshAppList(){
-            VolunteerService.getPendingApplications().then(response => {
-            this.$store.commit('UPDATE_PENDING_APPLICATIONS', response.data)
+            this.pendingApplications = this.pendingApplications.filter(app => {
+                return app.applicationId != this.appToUpdate.applicationId;
             });
+            this.selected = [];
+        },
+        countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown;
+        },
+        showAlert() {
+            this.dismissCountDown = this.dismissSecs;
         },
         clearSelected() {
         this.$refs.appTable.clearSelected()
