@@ -1,23 +1,27 @@
 <template>
     <div>
         <div class="text-center">
-            <b-button size="m" class="mr-5 mb-3" variant="outline-success" >
+            <div>
+                <b-alert v-if="aproveSuccess"></b-alert>
+                <b-alert v-if="denySuccess"></b-alert>
+            </div>
+            <b-button @click="aproveApp" size="m" class="mr-5 mb-3" variant="outline-success" >
                 Approve
             </b-button>
-            <b-button size="m" class="ml-5 mb-3" variant="outline-warning">
+            <b-button @click="denyApp" size="m" class="ml-5 mb-3" variant="outline-warning">
                 Deny
             </b-button>
         </div>
         <b-table
             striped hover selectable 
             :dark='true' 
-            b-table-select-single 
             :items="$store.state.pendingApplications" 
             :fields="fields" sticky-header="500"
-            @row-selected="onRowSelected" 
+            ref="appTable"
+            @row-selected="onRowSelected()" 
             responsive="sm" 
-            selected-variant="success"
-        >
+            :select-mode="selectMode"
+            selected-variant="success">
         </b-table>
     </div>
 </template>
@@ -34,16 +38,41 @@ export default {
                 username: '',
                 status: 0,
             },
-            
+            aproveSuccess: false,
+            denySuccess: false,
+            selectMode: 'single'
         }
     },
     methods: {
-        /*updateStatus() {
-            this.VolunteerService.ApproveOrDenyApplication(this.appToUpdate).then(response => {}).catch(error => {});
-        },*/
+        updateStatus() {
+            this.VolunteerService.ApproveOrDenyApplication(this.selectedApplications[0]).then(response => {
+                if(response.status === 200){
+                    this.aproveSuccess = true;
+                }
+                else{this.denySuccess = true;}
+            }).catch(error => {});
+        },
         onRowSelect(item) {
-            this.SelectedApplications = item; 
-        }
+            this.$store.commit("SELECT_APPLICATIONS", item);
+        },
+        aproveApp(){
+            this.selectedApplications[0].status = 2;
+            this.updateStatus();
+            this.selectedApplications = [];
+            this.refreshAppList();
+        },
+        denyApp(){
+            this.selectedApplications[0].status = 3;
+            this.updateStatus();
+        },
+        refreshAppList(){
+            VolunteerService.getPendingApplications().then(response => {
+            this.$store.commit('UPDATE_PENDING_APPLICATIONS', response.data)
+            });
+        },
+        clearSelected() {
+        this.$refs.appTable.clearSelected()
+      }
     },
     created() {
         VolunteerService.getPendingApplications().then(response => {

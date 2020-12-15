@@ -26,6 +26,7 @@ export default new Vuex.Store({
     showUpdatePetForm: false,
     volunteers: [],
     pendingApplications: [],
+    selectedApplication: null,
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -62,6 +63,9 @@ export default new Vuex.Store({
     },
     UPDATE_PENDING_APPLICATIONS(state, appList) {
       state.pendingApplications = appList;
+    },
+    SELECT_APPLICATIONS(state, selected) {
+      state.selectedApplication = selected[0];
     }
   }
 })
