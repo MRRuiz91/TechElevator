@@ -11,39 +11,13 @@ namespace CapstoneTests.DAL
     public class UserSqlDAOTests: AnimalDAOTests
     {
         [TestMethod]
-        public void AddApplicationTestHappyPath()
+
+        public void GetUserByUsernameTest()
         {
-            //Arrange
-            IApplicationDAO dao = new ApplicationSqlDAO(ConnectionString);
-            Application app = new Application();
-            app.Username = "test";
-            app.Phone = "123-456-7890";
-            app.Email = "test@test.com";
-            app.FirstName = "bob";
-            app.LastName = "thorton";
-            app.PromptResponse = "Testy test test test";
+            IUserDAO dao = new UserSqlDAO(ConnectionString);
+            User u = dao.GetUser("mark");
+            Assert.IsNotNull(u);
 
-            //Act
-            bool result = dao.AddApplication(app);
-
-            //Assert
-            Assert.AreEqual(true, result);
-        }
-        [TestMethod]
-        public void AddApplicationTestEmptyValues()
-        {
-            IApplicationDAO dao = new ApplicationSqlDAO(ConnectionString);
-            Application app = new Application();
-            app.Username = "test";
-            app.Phone = "";
-            app.Email = "test@test.com";
-            app.PromptResponse = "Testy test test test";
-
-            //Act
-            bool result = dao.AddApplication(app);
-
-            //Assert
-            Assert.AreEqual(true, result);
         }
     }
 }

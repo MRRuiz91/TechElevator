@@ -148,8 +148,6 @@ namespace Capstone.DAO
 
         public ReturnUser ApproveVolunteerApplication(MiniApp app)
         {
-            //bool result = false;
-            //int rowsAffected = 0;
             ReturnUser returned = new ReturnUser();
             UserSqlDAO u = new UserSqlDAO(connectionString);
             try
@@ -163,12 +161,6 @@ namespace Capstone.DAO
                             "UPDATE applications SET status=2 WHERE application_id = @app_id", conn);
                     cmd.Parameters.AddWithValue("@app_id", app.ApplicationId);
 
-                    //rowsAffected = cmd.ExecuteNonQuery();
-                    //if (rowsAffected == 1)
-                    //{
-                    //    result = true;
-
-                    //}
                 }
             }
             catch (SqlException)

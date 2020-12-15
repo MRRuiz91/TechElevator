@@ -27,7 +27,7 @@ namespace Capstone.Controllers
 
         public IActionResult UpdateApplicationStatus(MiniApp appToUpdate)
         {
-            bool wasRejected = false;
+            
             Application existing = AppDao.GetApplicationsByUsername(appToUpdate.Username);
             if (existing == null)
             {
@@ -41,8 +41,8 @@ namespace Capstone.Controllers
             }
             else
             {
-                wasRejected = AppDao.RejectVolunteerApplication(appToUpdate);
-                return Ok(wasRejected);
+                AppDao.RejectVolunteerApplication(appToUpdate);
+                return NoContent();
             }
         }
     }
