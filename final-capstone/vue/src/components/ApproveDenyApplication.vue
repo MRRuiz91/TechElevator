@@ -43,7 +43,7 @@ import VolunteerService from '../services/VolunteerService'
 export default {
     data () {
         return {
-            fields : [ 'applicationId', 'firstName', 'lastName', 'promptResponse', 'email', 'phone', 'status'],
+            fields : ['firstName', 'lastName', 'promptResponse', 'email'],
             pendingApplications : [],
             appToUpdate : {
                 applicationId: 0,

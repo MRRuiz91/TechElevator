@@ -8,7 +8,7 @@
         </div>
 
         <div class="alert alert-danger" role="alert" v-if="addPetErrors">{{addPetErrorMessage}}</div>
-        <div class="alert alert-success" role="alert2" v-if="addPetSuccess">Pet Successfully Added!</div>
+        <div class="alert alert-success" role="alert" v-if="addPetSuccess">Pet Successfully Added!</div>
 
         <b-form  class="add-pet-form" @submit.prevent="addPet">
           <div class='row'>
@@ -26,7 +26,7 @@
           <div class= "row">
             <div class="col-sm">
               <b-form-group class = "pet-info" label="Age:" label-for="petAge">
-                <b-form-input id="petAge" v-bind="newPet.age" placeholder="Enter age"></b-form-input>
+                <b-form-input id="petAge" v-model="newPet.age" placeholder="Enter age"></b-form-input>
               </b-form-group>
             </div>
           <div class="col-sm">
@@ -69,7 +69,7 @@ export default {
   data() {
     return {
       newPet : {
-        age : 0,
+        age : '',
         breed : '',
         name : '',
         picture : '',
@@ -83,37 +83,25 @@ export default {
   },
   methods: {
       addPet() {
-        let ageInt = parseInt(this.newPet.age)
-        if (!isNaN(ageInt) && ageInt >= 0){
+        
           PetsService
               .addPet(this.newPet)
               .then(response => {
-                    this.addPetSuccess = response;
-                    this.clearform();
+                    if (response.status == 201) {
+                        this.addPetSuccess = true;
+                        this.newPet= {};
+                    }
               })
               .catch(error => {
                   const response = error.response;
                   this.addPetErrors = true;
-                  if (response.status === 400) {
+                  if (response.status === 404) {
                       this.addPetErrorMessage = 'Bad Request: Validation Errors';
                   }
               });
-        }
-        else {
-          this.addPetErrors = true;
-          this.addPetErrorMessage = "Age must an integer please try again";
-        }
     },
     clearForm() {
-      this.newPet.age = 0,
-      this.newPet.breed = ''
-      this.newPet.name = '';
-      this.newPet.picture = '';
-      this.newPet.isAdopted = 0;
-      this.newPet.arrivalDate = '';
-      this.addPetSuccess = false;
-      this.addPetErrors = false;
-      this.addPetErrorMessage ='There adding this pet was unsuccessful.';
+      this.newPet = {};
     }
   }
 };

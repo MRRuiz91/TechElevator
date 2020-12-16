@@ -6,11 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import VolunteerPortal from '../views/VolunteerPortal.vue'
-import AddPet from '../views/AddPet.vue'
 import UpdatePetForm from '../components/UpdatePetForm.vue'
 import NewPassword from '../views/NewPassword.vue'
-//import WorkerList from '../components/WorkerList.vue'
-//import PendingApplications from '../components/PendingApplications.vue'
 
 Vue.use(Router)
 /**
@@ -66,14 +63,6 @@ const router = new Router({
       }
     },
     {
-      path: "/add-pet",
-      name: "addPet",
-      component: AddPet,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: '/update-pet',
       name: "updatePet",
       component: UpdatePetForm,
@@ -89,14 +78,6 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    /*{
-      path: '/pending-applications',
-      name: "pendingApplications",
-      component: PendingApplications,
-      meta: {
-        requiresAuth: true
-      }
-    }*/
   ]
 })
 

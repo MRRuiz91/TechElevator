@@ -29,6 +29,11 @@ body {
 a {
   text-decoration: none !important;
 }
+#app {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
 /*.container {
   display: grid;
   grid-template-areas: 

@@ -1,8 +1,14 @@
 <template>
     <b-table
-        striped hover selectable :dark='true' b-table-select-single sticky-header
-        :items="$store.state.allPets" :fields="fields" 
-        @row-selected="onRowSelected" responsive="sm" selected-variant="success"
+        striped hover selectable 
+        :dark='true'
+        sticky-header
+        :items="$store.state.allPets" 
+        :fields="fields" 
+        @row-selected="onRowSelected" 
+        responsive="sm" 
+        :select-mode="selectMode" 
+        selected-variant="success"
     >
     </b-table>
 </template>
@@ -32,6 +38,7 @@ export default {
                     sortable: true
                 }
             ],
+            selectMode: 'single',
             selected: []
         }
     },
