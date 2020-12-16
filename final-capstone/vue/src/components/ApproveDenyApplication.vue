@@ -63,11 +63,6 @@ export default {
             VolunteerService.ApproveOrDenyApplication(this.appToUpdate).then(response => {
                 if(response.status == 200){
                     this.approveSuccess = true;
-                    var delayInMilliseconds = 3000; //3 seconds
-                    window.setTimeout(function() {
-                    //your code to be executed after 3 seconds
-                    this.approveSuccess = false
-                    }, delayInMilliseconds);
                 }
                 else{
                     this.showAlert();

@@ -6,7 +6,7 @@
  
         <div class="row m-5">
             <div class="col-sm tabs "> 
-                <b-card class="bg-secondary border text-white">
+                <b-card id="outerCard" class=" border text-white">
                     <b-tabs justified class="bg-dark border-dark text-white" card>
                         <b-tab title="New Pet" lazy>
                             <add-pet-form />
@@ -24,7 +24,7 @@
             <div class="col-sm-0.5"></div>
 
             <div class="volunteerDirectory col-sm ">
-                <b-card class="bg-secondary border text-white" >
+                <b-card id="outerCard" class="bg-dark border text-white" >
                     <b-tabs justified class="bg-dark border-dark text-white" card>
                         <b-tab title="Volunteer Directory" active lazy>
                             <volunteer-directory />
@@ -62,6 +62,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    #outerCard {
+  background-color: black !important;
+}
 </style>

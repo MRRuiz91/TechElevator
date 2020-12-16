@@ -1,6 +1,6 @@
 <template>
     <b-table
-        striped hover :dark='true' 
+        striped hover :dark="true"
         :items="volunteerList" :fields="fields" 
          responsive="sm" selected-variant="success"
     >

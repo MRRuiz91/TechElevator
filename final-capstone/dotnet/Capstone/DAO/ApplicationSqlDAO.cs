@@ -25,7 +25,7 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand("SELECT application_id, username, email, phone_number, prompt_response, first_name, last_name, status " +
-                                                    "FROM applications WHERE username = @username AND status = 1", conn);
+                                                    "FROM applications WHERE username = @username", conn);
                     cmd.Parameters.AddWithValue("@username", username);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -160,7 +160,7 @@ namespace Capstone.DAO
                         new SqlCommand(
                             "UPDATE applications SET status=2 WHERE application_id = @app_id", conn);
                     cmd.Parameters.AddWithValue("@app_id", app.ApplicationId);
-
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (SqlException)

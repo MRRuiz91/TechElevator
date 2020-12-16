@@ -1,6 +1,8 @@
 <template>
     <div class= "pet-container">
+       
         <pet-card class= "card bg-dark mx-2" v-bind:pet="pet"  v-for="pet in $store.state.availablePets" v-bind:key="pet.petId"/>
+       
     </div>
 </template>
 
@@ -29,4 +31,5 @@ export default {
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
 </style>
