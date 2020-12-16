@@ -26,7 +26,7 @@
             <div class="volunteerDirectory col-sm ">
                 <b-card class="bg-secondary border text-white" >
                     <b-tabs justified class="bg-dark border-dark text-white" card>
-                        <b-tab title="Volunteer Directory" active >
+                        <b-tab title="Volunteer Directory" active lazy>
                             <volunteer-directory />
                         </b-tab>
                         <b-tab v-if="$store.state.user.role === 'admin'" title="Review Pending Applications" lazy>

@@ -25,7 +25,10 @@
           <b-form-input id="last-name" v-model="application.lastName" required placeholder="Workman"></b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="warning">Submit</b-button>
+        <b-form-group label="Why do you want to work with M and Z's as an adoption volunteer?" label-for="response">
+          <b-textarea id="response" v-model="application.promptResponse" placeholder="Enter your answer here" rows="3" max-rows="8"></b-textarea>
+        </b-form-group>
+        <b-button type="submit" variant="outline-success">Submit</b-button>
     </b-form>
   </div>
 </template>
@@ -42,7 +45,8 @@ export default {
             email : '',
             promptResponse : '',
             firstName : '',
-            lastName : ''
+            lastName : '',
+            response : ''
         },
         registrationErrors: false,
         registrationErrorMsg: 'There were problems registering this user.',

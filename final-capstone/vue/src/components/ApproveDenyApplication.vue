@@ -27,7 +27,7 @@
         <b-table
             striped hover selectable 
             :dark='true' 
-            :items="pendingApplications" 
+            :items="filteredList" 
             :fields="fields" sticky-header="500"
             ref="appTable"
             @row-selected="onRowSelect" 
@@ -43,7 +43,7 @@ import VolunteerService from '../services/VolunteerService'
 export default {
     data () {
         return {
-            fields : [ 'applicationId', 'firstName', 'lastName', 'Response', 'email', 'phone', 'status'],
+            fields : [ 'applicationId', 'firstName', 'lastName', 'promptResponse', 'email', 'phone', 'status'],
             pendingApplications : [],
             appToUpdate : {
                 applicationId: 0,
@@ -63,8 +63,15 @@ export default {
             VolunteerService.ApproveOrDenyApplication(this.appToUpdate).then(response => {
                 if(response.status == 200){
                     this.approveSuccess = true;
+                    var delayInMilliseconds = 3000; //3 seconds
+                    window.setTimeout(function() {
+                    //your code to be executed after 3 seconds
+                    this.approveSuccess = false
+                    }, delayInMilliseconds);
                 }
-                else{this.showAlert();}
+                else{
+                    this.showAlert();
+                    }
             })/*.catch(error => {});*/
         },
         onRowSelect(item) {
@@ -81,7 +88,6 @@ export default {
                 return app.applicationId != this.appToUpdate.applicationId;
             });
             this.selected = [];
-            //this.refreshAppList();
         },
         denyApp(){
             const denyStatus = 3;
@@ -101,6 +107,13 @@ export default {
         clearSelected() {
         this.$refs.appTable.clearSelected()
       }
+    },
+    computed: {
+        filteredList() {
+            return this.pendingApplications.filter(app => {
+                return app.status === 1;
+            });
+        }
     },
     created() {
         VolunteerService.getPendingApplications().then(response => {

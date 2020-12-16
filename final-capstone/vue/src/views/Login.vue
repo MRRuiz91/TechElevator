@@ -39,7 +39,7 @@
       <div>
       <b-button class="bg-dark" type="submit">Sign in</b-button>
       <br>
-      <router-link :to="{ name: 'register' }">Submit a Volunteer Application Here</router-link>
+      <router-link :to="{ name: 'register' }">Submit a Volunteer Application Here</router-link> |
       </div>
     </form>
     </b-card>
@@ -70,7 +70,12 @@ export default {
         if (response.status == 200) {
           this.$store.commit("SET_AUTH_TOKEN", response.data.token);
           this.$store.commit("SET_USER", response.data.user);
-          this.$router.push('volunteer-portal');
+          if (response.data.isFirstLogin) {
+            this.$router.push('reset-password');
+          }
+          else {
+            this.$router.push('volunteer-portal');
+          }
         }
       })
       .catch(error => {

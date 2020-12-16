@@ -1,6 +1,6 @@
 <template>
   <div class="home text-white">
-    <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
+    <div class="alert alert-success m-3" role="alert" v-if="this.$route.query.registration">
       Thank you for applying, an administrator will review your application and notify you of your status.
     </div>
 

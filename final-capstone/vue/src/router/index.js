@@ -8,6 +8,7 @@ import store from '../store/index'
 import VolunteerPortal from '../views/VolunteerPortal.vue'
 import AddPet from '../views/AddPet.vue'
 import UpdatePetForm from '../components/UpdatePetForm.vue'
+import NewPassword from '../views/NewPassword.vue'
 //import WorkerList from '../components/WorkerList.vue'
 //import PendingApplications from '../components/PendingApplications.vue'
 
@@ -80,15 +81,15 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    /*{
-      path: '/worker-list',
-      name: "workerList",
-      component: WorkerList,
+    {
+      path: '/reset-password',
+      name: "resetPassword",
+      component: NewPassword,
       meta: {
         requiresAuth: true
       }
     },
-    {
+    /*{
       path: '/pending-applications',
       name: "pendingApplications",
       component: PendingApplications,
