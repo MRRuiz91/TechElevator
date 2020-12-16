@@ -32,6 +32,7 @@
     {
         public ReturnUser User { get; set; }
         public string Token { get; set; }
+        public bool IsFirstLogin { get; set; }
     }
 
     /// <summary>

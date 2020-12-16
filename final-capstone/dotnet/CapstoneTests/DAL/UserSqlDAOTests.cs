@@ -20,11 +20,11 @@ namespace CapstoneTests.DAL
         }
 
         [TestMethod]
-        public void UpdateUserLoginStatusTest()
+        public void UpdatePasswordAndInitialLoginTest()
         {
             IUserDAO dao = new UserSqlDAO(ConnectionString);
             
-            bool u = dao.UpdateUserLoginStatus(dao.GetNewestUserId());
+            bool u = dao.UpdateUserLoginStatus("mark");
             Assert.IsTrue(u);
 
         }

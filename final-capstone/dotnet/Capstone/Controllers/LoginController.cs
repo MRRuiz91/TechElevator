@@ -39,7 +39,7 @@ namespace Capstone.Controllers
                 string token = tokenGenerator.GenerateToken(user.UserId, user.Username, user.Role);
 
                 // Create a ReturnUser object to return to the client
-                LoginResponse retUser = new LoginResponse() { User = new ReturnUser() { UserId = user.UserId, Username = user.Username, Role = user.Role }, Token = token };
+                LoginResponse retUser = new LoginResponse() { User = new ReturnUser() { UserId = user.UserId, Username = user.Username, Role = user.Role }, Token = token, IsFirstLogin =user.IsFirstLogin };
 
                 // Switch to 200 OK
                 result = Ok(retUser);
@@ -72,13 +72,14 @@ namespace Capstone.Controllers
         }
 
         [HttpPut("/users")]
-        public IActionResult UpdateLoginStatus(User user)
+        public IActionResult UpdatePasswordAndInitialLogin(LoginUser user)
         {
-            
-            bool success = userDAO.UpdateUserLoginStatus(user.UserId);
-            if (success)
+
+            bool loginUpdateSuccess = userDAO.UpdateUserLoginStatus(user.Username);
+            bool passwordUpdated = userDAO.UpdatePassword(user);
+            if (loginUpdateSuccess && passwordUpdated)
             {
-                return Ok(success);
+                return Ok(user);
             }
             else
             {

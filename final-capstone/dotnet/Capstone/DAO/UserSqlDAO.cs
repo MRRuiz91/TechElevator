@@ -124,7 +124,7 @@ namespace Capstone.DAO
             return userId;
         }
 
-        public bool UpdateUserLoginStatus(int userId)
+        public bool UpdateUserLoginStatus(string username)
         {
             bool success = false;
             try
@@ -133,8 +133,8 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("UPDATE users SET is_first_login = 0 WHERE user_id = @user_id", conn);
-                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET is_first_login = 0 WHERE username = @username", conn);
+                    cmd.Parameters.AddWithValue("@username", username);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     success = true;
                 }
@@ -191,5 +191,45 @@ namespace Capstone.DAO
             }
             return allUsers;
         }
+
+        public bool UpdatePassword(LoginUser user)
+        {
+            bool success = false;
+            PasswordHasher pwHash = new PasswordHasher();
+            PasswordHash newHash = pwHash.ComputeHash(user.Password);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET password_hash=@hash, salt = @salt WHERE username = @username", conn);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    cmd.Parameters.AddWithValue("@hash", newHash.Password);
+                    cmd.Parameters.AddWithValue("@salt", newHash.Salt);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    success = true;
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return success;
+        }
+        /*        public PasswordHash ComputeHash(string plainTextPassword)
+        {
+            //Create the hashing provider
+            Rfc2898DeriveBytes rfc = new Rfc2898DeriveBytes(plainTextPassword, 8, WorkFactor);
+
+            //Get the Hashed Password
+            byte[] hash = rfc.GetBytes(20);
+
+            //Set the SaltValue
+            string salt = Convert.ToBase64String(rfc.Salt);
+
+            //Return the Hashed Password
+            return new PasswordHash(Convert.ToBase64String(hash), salt);
+        }*/
     }
 }
