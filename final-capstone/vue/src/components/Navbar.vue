@@ -1,9 +1,9 @@
 <template>
   <b-navbar id="navBar" class="text-white" toggleable="lg" variant="dark" type="dark border">
 
-      <b-navbar-brand to='/' class="ml-1"> <img src="..\assets\icon.png" class="img" height="45 px"/> Matt and Zach's Marvelous Zoo</b-navbar-brand>
+      <b-navbar-brand to='/' id="brand"> <img src="..\assets\iconO.png" class="img" height="45 px"/> Matt and Zach's Marvelous Zoo</b-navbar-brand>
 
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav>
         <b-nav-item  to="/"><img src="..\assets\pawPrintOrangeL.png" class="img" height="45 px"/>Home</b-nav-item>
 
         <b-nav-item  to="logout" v-if="$store.state.token != ''"><img src="..\assets\pawPrintOrangeL.png" class="img" height="45 px"/>Logout</b-nav-item>
@@ -28,5 +28,37 @@ export default {
   background-color: black !important;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-position-x: left;
+}
+#brand {
+  margin-left: 10%;
+}
+.navbar-nav {
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    #navBar {
+    background-image: url('~@/assets/Navbar-flair-3.png') !important;
+    background-color: black !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: left;
+
+  }
+  #brand {
+    margin-left: 5%;
+  }
+  .navbar-nav {
+    flex-direction: row;
+    margin: 0 5% 15%;
+    justify-content: space-between !important;
+  }
+  
+  .img {
+    height: 20px !important;
+  }
 }
 </style>

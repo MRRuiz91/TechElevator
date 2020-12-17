@@ -10,19 +10,19 @@
       </b-form-group>
 
       <b-form-group class = "contact-info" label="Email address:" label-for="email">
-        <b-form-input id="email" v-model="application.email" type="email" required placeholder="your.email@email.com"></b-form-input>
+        <b-form-input id="email" v-model="application.email" type="email" required placeholder="e.g. your.email@email.com"></b-form-input>
       </b-form-group>
 
         <b-form-group class = "contact-info" label="Phone Number:" label-for="phone-number">
-          <b-form-input id="phone-number" v-model="application.phone" required placeholder="(513)867-5309"></b-form-input>
+          <b-form-input id="phone-number" v-model="application.phone" required placeholder="e.g. (555)555-5555"></b-form-input>
         </b-form-group>
 
         <b-form-group class = "contact-info" label="First Name:" label-for="first-name">
-          <b-form-input id="first-name" v-model="application.firstName" required placeholder="Matt"></b-form-input>
+          <b-form-input id="first-name" v-model="application.firstName" required placeholder="e.g. John"></b-form-input>
         </b-form-group>
 
         <b-form-group class = "contact-info" label="Last Name:" label-for="last-name">
-          <b-form-input id="last-name" v-model="application.lastName" required placeholder="Workman"></b-form-input>
+          <b-form-input id="last-name" v-model="application.lastName" required placeholder="e.g. Smith"></b-form-input>
         </b-form-group>
 
         <b-form-group label="Why do you want to work with M and Z's as an adoption volunteer?" label-for="response">

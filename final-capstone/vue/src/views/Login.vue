@@ -39,7 +39,7 @@
       <div>
       <b-button class="bg-dark" type="submit">Sign in</b-button>
       <br>
-      <router-link :to="{ name: 'register' }">Submit a Volunteer Application Here</router-link> |
+      <router-link class="text-success" :to="{ name: 'register' }">Submit a Volunteer Application Here</router-link>
       </div>
     </form>
     </b-card>

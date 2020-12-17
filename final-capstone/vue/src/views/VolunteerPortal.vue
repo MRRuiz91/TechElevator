@@ -64,6 +64,14 @@ export default {
 
 <style scoped>
     #outerCard {
-  background-color: black !important;
+        background-color: black !important;
+    }
+    .nav-link {
+        text-decoration-color: greenyellow;
+    }
+    .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #495057;
+    background-color: #dee2e6 !important;
+    border-color: #989b9e #989b9e #fff;
 }
 </style>

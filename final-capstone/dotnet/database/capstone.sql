@@ -48,7 +48,7 @@ CREATE TABLE applications (
 	application_id int IDENTITY(1,1) NOT NULL,
 	username varchar(64) NOT NULL,
 	email varchar(64) NOT NULL,
-	phone_number varchar(12) NOT NULL,
+	phone_number varchar(14) NOT NULL,
 	prompt_response varchar(500) NOT NULL,
 	first_name varchar(64) NOT NULL,
 	last_name varchar(64) NOT NULL,
@@ -110,13 +110,43 @@ INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('5', 'Bear', 'https://live.staticflickr.com/65535/50694304848_0efe8c04f1_c.jpg', 0, '10/20/2019');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES ('2', 'George', 'https://live.staticflickr.com/65535/50692851887_c99e4f9db2_w.jpg', 0, '12/08/2020';
+VALUES ('2', 'George', 'https://live.staticflickr.com/65535/50692851887_c99e4f9db2_w.jpg', 0, '12/08/2020');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('3', 'Arlo', 'https://live.staticflickr.com/65535/50694818113_b17f16a73c_w.jpg', 0, '01/01/2020');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('8', 'Penny', 'https://live.staticflickr.com/65535/50719402142_649a4cb625_c.jpg', 0, '12/07/2012');
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by)
+VALUES ('4', 'Pepper', 'https://live.staticflickr.com/65535/50730014656_15924af337_w.jpg', 1, 'unknown', '09/23/17', 'Matt Jorgensen')
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date, adoption_date, adopted_by)
+VALUES ('5', 'Flora', 'https://live.staticflickr.com/65535/50729282263_76bd72db55_w.jpg', 1, 'unknown', '02/24/15', 'Matt Jorgensen')
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
+VALUES ('4', 'Sam', 'https://live.staticflickr.com/65535/50730110067_ba1bda8f0e_w.jpg', 0, '12/15/2020');
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
+VALUES ('14', 'Kilo', 'https://live.staticflickr.com/65535/50730014686_62a145b23f_w.jpg', 0, '10/1/2020');
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
+VALUES ('4', 'Kailani', 'https://live.staticflickr.com/65535/50729282193_a680377287_w.jpg', 0, '11/26/2020');
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
+VALUES ('9', 'Biggu', 'https://live.staticflickr.com/65535/50730110387_59072e3e2e_w.jpg', 0, '04/27/2020');
+
+INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status)
+VALUES ('MRRuiz', 'matt.ruizeh@gmail.com', '(859)816-7648', 'Save the animals, bro', 'Matt', 'Ruiz', 1)
+
+INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status)
+VALUES ('mj13', 'matt.jorgensen13@gmail.com', '(555)555-5555', 'I love animals', 'Matt', 'Jorgensen', 1)
+
+INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status)
+VALUES ('Wiiilllsssooonn', 'zachary.l.wilson21@gmail.com', '(513)708-7973', 'Every animal deserves a loving family and a warm home! <3', 'Zach', 'Wilson', 1)
+
+INSERT INTO applications (username, email, phone_number, prompt_response, first_name, last_name, status)
+VALUES ('workmanZ', 'zacharyyy.1994@gmail.com', '(859)867-5309', 'Animals are people!', 'Zach', 'Workman', 1)
 --INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 --VALUES (, '', '', 0, 12/08/2020);
 GO
