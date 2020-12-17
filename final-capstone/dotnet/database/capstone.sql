@@ -80,7 +80,7 @@ INSERT INTO users (username, password_hash, salt, user_role, is_first_login) VAL
 INSERT INTO users (username, password_hash, salt, user_role, is_first_login) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 0);
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date,adoption_date, adopted_by)
-VALUES ('3', 'Roger', 'https://live.staticflickr.com/65535/50692703601_19cbf11613_c.jpg', 1, '07/08/2019', '12/08/2020', 'Jason Picardi');
+VALUES ('3', 'Roger', 'https://live.staticflickr.com/65535/50692703601_d9e9b23049_w.jpg', 1, '07/08/2019', '12/08/2020', 'Jason Picardi');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('2', 'Fred', 'https://live.staticflickr.com/65535/50691972548_e85879479d_w.jpg', 0, '02/07/2019');
@@ -90,6 +90,9 @@ VALUES ('Hank Age 4, Dale Age 3', 'Hank and Dale', 'https://live.staticflickr.co
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('8', 'Grace', 'https://live.staticflickr.com/65535/50692781287_9ea237ec1f_w.jpg', 0, '06/08/2019');
+
+INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
+VALUES ('49', 'Mai-Thai', 'https://live.staticflickr.com/65535/50696603332_eb7de29dd5_w.jpg', 0, '05/01/1978');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('3', 'Frida', 'https://live.staticflickr.com/65535/50692703616_3370d7881a_c.jpg', 0, '12/08/2019');
