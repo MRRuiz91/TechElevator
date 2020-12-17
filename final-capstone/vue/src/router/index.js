@@ -8,6 +8,7 @@ import store from '../store/index'
 import VolunteerPortal from '../views/VolunteerPortal.vue'
 import UpdatePetForm from '../components/UpdatePetForm.vue'
 import NewPassword from '../views/NewPassword.vue'
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(Router)
 /**
@@ -76,6 +77,14 @@ const router = new Router({
       component: NewPassword,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: '/not-found',
+      name: "notFound",
+      component: NotFound,
+      meta: {
+        requiresAuth: false
       }
     },
   ]

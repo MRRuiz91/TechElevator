@@ -34,7 +34,7 @@ export default {
 }
 
 #brand {
-  margin-left: 7%;
+  margin-left: 10%;
 }
 
 .navbar-nav {

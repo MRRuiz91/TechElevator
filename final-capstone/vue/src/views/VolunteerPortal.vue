@@ -11,7 +11,7 @@
                         <b-tab title-link-class="text-warning" title="New Pet" lazy>
                             <add-pet-form />
                         </b-tab>
-                        <b-tab title-link-class="text-warning" title="Pet Roster" active >
+                        <b-tab title-link-class="text-warning" title="Pet Roster" active lazy>
                             <pet-roster />
                         </b-tab>
                         <b-tab title-link-class="text-warning" title="Update Pet" lazy v-bind:disabled=petSelected>

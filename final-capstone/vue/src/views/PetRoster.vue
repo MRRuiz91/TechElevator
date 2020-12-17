@@ -9,6 +9,8 @@
         responsive="sm" 
         :select-mode="selectMode" 
         selected-variant="success"
+        :sort-by.sync="sortBy"
+        :sort-desc.sync="sortDesc"
     >
     </b-table>
 </template>
@@ -19,10 +21,13 @@ import PetsService from '../services/PetsService'
 export default {
     data () {
         return {
+            sortBy: 'name',
+            sortDesc: false,
             fields: [ 
                 {
                     key: 'arrivalDate',
                     sortable: true
+                    
                 }, 
                 {
                     key: 'name',

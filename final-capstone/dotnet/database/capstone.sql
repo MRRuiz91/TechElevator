@@ -24,7 +24,7 @@ CREATE TABLE users (
 	first_name varchar(64),
 	last_name varchar(64),
 	email varchar(64),
-	phone_number varchar(12),
+	phone_number varchar(20),
 	is_first_login bit
 
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
@@ -48,7 +48,7 @@ CREATE TABLE applications (
 	application_id int IDENTITY(1,1) NOT NULL,
 	username varchar(64) NOT NULL,
 	email varchar(64) NOT NULL,
-	phone_number varchar(14) NOT NULL,
+	phone_number varchar(20) NOT NULL,
 	prompt_response varchar(500) NOT NULL,
 	first_name varchar(64) NOT NULL,
 	last_name varchar(64) NOT NULL,
@@ -131,7 +131,7 @@ INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('14', 'Kilo', 'https://live.staticflickr.com/65535/50730014686_62a145b23f_w.jpg', 0, '10/1/2020');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
-VALUES ('4', 'Kailani', 'https://live.staticflickr.com/65535/50729282193_a680377287_w.jpg', 0, '11/26/2020');
+VALUES ('6', 'Kailani', 'https://live.staticflickr.com/65535/50729282193_a680377287_w.jpg', 0, '11/26/2020');
 
 INSERT INTO pets (pet_age, pet_name, pet_image, is_adopted, arrival_date)
 VALUES ('9', 'Biggu', 'https://live.staticflickr.com/65535/50730110387_59072e3e2e_w.jpg', 0, '04/27/2020');
