@@ -1,6 +1,6 @@
 <template>
   <b-navbar id="navBar" class="text-white" toggleable="lg" variant="dark" type="dark border">
-
+    
       <b-navbar-brand to='/' id="brand"> <img src="..\assets\iconO.png" class="img" height="45 px"/> Matt and Zach's Marvelous Zoo</b-navbar-brand>
 
       <b-navbar-nav>
@@ -25,15 +25,18 @@ export default {
 <style scoped>
 #navBar {
   background-image: url('~@/assets/Navbar-flair-3.png') !important;
+ 
   background-color: black !important;
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: bottom;
   background-position-x: left;
 }
+
 #brand {
-  margin-left: 10%;
+  margin-left: 7%;
 }
+
 .navbar-nav {
   margin-left: auto;
 }

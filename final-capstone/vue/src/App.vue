@@ -26,10 +26,12 @@ body {
   background-attachment: fixed;
 
 }
+/*
 a {
   text-decoration: none !important;
 
 }
+*/
 #app {
   height: 100% !important;
   display: flex;
