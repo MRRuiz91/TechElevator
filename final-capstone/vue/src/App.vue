@@ -28,6 +28,7 @@ body {
 }
 a {
   text-decoration: none !important;
+
 }
 #app {
   height: 100% !important;
