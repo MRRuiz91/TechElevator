@@ -1,5 +1,5 @@
 <template>
-  <div id="register" class=" row text-center">
+  <div id="register" class=" row">
     <div class="col-sm-4"></div>
 
     <div class="col-sm-4">

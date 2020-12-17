@@ -8,7 +8,7 @@
       </div>
       <div class="col-sm-4">
         <center>
-          <div><img class="img" src ="..\assets\MarvelousZooO.png" width="100%"/></div>
+          <div><img class="img" src ="..\assets\MarvelousZo.png" width="100%"/></div>
           <h1>Little Buddies looking for a 'Fur'ever Home</h1>
         </center>
       </div>

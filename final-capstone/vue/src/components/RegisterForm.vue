@@ -1,7 +1,12 @@
 <template>
   <div>
+  <div class="text-center">
+    <h1 class="h3 mb-3 font-weight-normal">Submit Volunteer Application</h1>
+  </div>
+    <div>
     <b-form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Submit Volunteer Application</h1>
+      
+      
 
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">{{ registrationErrorMsg }}</div>
 
@@ -30,6 +35,7 @@
         </b-form-group>
         <b-button type="submit" variant="outline-success">Submit</b-button>
     </b-form>
+    </div>
   </div>
 </template>
 

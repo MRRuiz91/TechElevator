@@ -28,7 +28,7 @@ export default {
   background-repeat: no-repeat;
   }
 #nav {
-  margin-right: 6%;
+  margin-right:5%;
 }
 @media only screen and (max-width: 768px) {
   #footer {

@@ -7,14 +7,14 @@
         <div class="row m-5">
             <div class="col-sm tabs "> 
                 <b-card id="outerCard" class=" border text-white">
-                    <b-tabs justified class="bg-dark border-dark text-white" card>
-                        <b-tab title="New Pet" lazy>
+                    <b-tabs active-nav-item-class="font-weight-bold" justified class="bg-dark border-dark text-white" card>
+                        <b-tab title-link-class="text-warning" title="New Pet" lazy>
                             <add-pet-form />
                         </b-tab>
-                        <b-tab title="Pet Roster" active >
+                        <b-tab title-link-class="text-warning" title="Pet Roster" active >
                             <pet-roster />
                         </b-tab>
-                        <b-tab title="Update Pet" lazy v-bind:disabled=petSelected>
+                        <b-tab title-link-class="text-warning" title="Update Pet" lazy v-bind:disabled=petSelected>
                             <update-pet-form />
                         </b-tab>
                     </b-tabs>
@@ -25,11 +25,11 @@
 
             <div class="volunteerDirectory col-sm ">
                 <b-card id="outerCard" class="bg-dark border text-white" >
-                    <b-tabs justified class="bg-dark border-dark text-white" card>
-                        <b-tab title="Volunteer Directory" active lazy>
+                    <b-tabs active-nav-item-class="font-weight-bold" justified class="bg-dark border-dark text-white" card>
+                        <b-tab title-link-class="text-warning" title="Volunteer Directory" active lazy>
                             <volunteer-directory />
                         </b-tab>
-                        <b-tab v-if="$store.state.user.role === 'admin'" title="Review Pending Applications" lazy>
+                        <b-tab title-link-class="text-warning" v-if="$store.state.user.role === 'admin'" title="Review Pending Applications" lazy>
                             <approve-deny-application />
                         </b-tab>
                     </b-tabs>
@@ -67,11 +67,16 @@ export default {
         background-color: black !important;
     }
     .nav-link {
-        text-decoration-color: greenyellow;
+        text-decoration-color: greenyellow !important;
     }
     .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     color: #495057;
     background-color: #dee2e6 !important;
     border-color: #989b9e #989b9e #fff;
+
+}
+
+.nav a {
+    color: greenyellow !important; 
 }
 </style>
