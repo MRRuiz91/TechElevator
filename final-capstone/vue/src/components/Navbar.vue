@@ -1,6 +1,7 @@
 <template>
-  <b-navbar id="navBar" class="text-white" bg-black toggleable="lg" variant="dark" type="dark border">
-      <b-navbar-brand to='/'> <img src="..\assets\icon.png" class="img" height="45 px"/> Matt and Zach's Marvelous Zoo</b-navbar-brand>
+  <b-navbar id="navBar" class="text-white" toggleable="lg" variant="dark" type="dark border">
+
+      <b-navbar-brand to='/' class="ml-1"> <img src="..\assets\icon.png" class="img" height="45 px"/> Matt and Zach's Marvelous Zoo</b-navbar-brand>
 
       <b-navbar-nav class="ml-auto">
         <b-nav-item  to="/"><img src="..\assets\pawPrintOrangeL.png" class="img" height="45 px"/>Home</b-nav-item>
@@ -23,6 +24,9 @@ export default {
 
 <style scoped>
 #navBar {
+  background-image: url('~@/assets/Navbar-flair-3.png') !important;
   background-color: black !important;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>
